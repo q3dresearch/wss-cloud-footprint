@@ -11,6 +11,11 @@ Two charts, written to examples/charts/:
                         currently expanding, and what has stalled
   region-gap.svg        what a newly opened region still lacks, and how much
                         of the catalogue ships as the "opening kit"
+  network-strategy.svg  breadth against depth of interconnection — who is
+                        everywhere-and-thin, who is concentrated-and-deep
+  capacity-history.svg  declared capacity per network over time. Renders a
+                        placeholder until enough captures exist; this repo is
+                        longitudinal, and the chart should say so from day one
 
 Both read the derived table, never the raw archive. Stdlib only,
 deterministic output: the same observations always produce the same bytes.
@@ -191,6 +196,152 @@ def region_gap(out: Path, thinnest: int = 4) -> str:
     return f"{out.relative_to(REPO)} — {len(data)} regions, opening kit {len(kit)} services"
 
 
+NET_COLOUR = {"akamai": "#2a78d6", "meta": "#eb6834", "aws": "#1baf7a", "cloudflare": "#4a3aa7"}
+NET_OTHER = "#b8b7b0"
+
+
+def capacity_rows():
+    """(date, network, Mbps) for every capture we hold."""
+    out = []
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
+        with partition.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                if r["metric"] == "declared_capacity_total":
+                    out.append((r["observed_at"][:10], r["entity_id"][4:], int(r["value"])))
+    return out
+
+
+def network_strategy(out: Path) -> str:
+    """Breadth (exchanges reached) against depth (capacity per exchange).
+
+    Same total capacity can be spread thin across many exchanges or
+    concentrated in few — a strategy difference invisible in a ranking.
+    """
+    rows_ = []
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
+        with partition.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                if r["metric"] in ("declared_capacity_total", "exchanges_present"):
+                    rows_.append(r)
+    if not rows_:
+        return "network-strategy.svg skipped: no capacity observations yet"
+    latest = max(r["observed_at"] for r in rows_)
+    cap, exch = {}, {}
+    for r in rows_:
+        if r["observed_at"] != latest:
+            continue
+        (cap if r["metric"] == "declared_capacity_total" else exch)[r["entity_id"][4:]] = int(r["value"])
+    pts = [(n, exch[n], cap[n] / exch[n] / 1000, cap[n] / 1e6) for n in cap if exch.get(n)]
+
+    width, height = 900.0, 470.0
+    left, right, top, bottom = 70.0, 150.0, 104.0, 58.0
+    xmax = max(p[1] for p in pts) * 1.12
+    ymax = max(p[2] for p in pts) * 1.15
+    vmax = max(p[3] for p in pts)
+    x_of = lambda v: left + v / xmax * (width - left - right)  # noqa: E731
+    y_of = lambda v: (height - bottom) - v / ymax * (height - bottom - top)  # noqa: E731
+
+    body = [
+        svg_text(24, 30, "Two ways to build a network", size=16, fill=INK, weight="600"),
+        svg_text(24, 50, f"exchanges reached against average capacity at each · snapshot {latest[:10]}", size=12, fill=INK2),
+        svg_text(24, 70, "right = present in more places · up = heavier at each one · bubble area = total declared capacity", size=11, fill=MUTED),
+    ]
+    for v in range(0, int(xmax), 100):
+        if v:
+            gx = x_of(v)
+            body.append(f'<line x1="{gx:.1f}" y1="{top - 8}" x2="{gx:.1f}" y2="{height - bottom}" stroke="{GRID}" stroke-width="1"/>')
+            body.append(svg_text(gx, height - bottom + 18, str(v), size=10, fill=MUTED, anchor="middle", tabular=True))
+    for v in range(0, int(ymax), 100):
+        if v:
+            gy = y_of(v)
+            body.append(f'<line x1="{left}" y1="{gy:.1f}" x2="{width - right}" y2="{gy:.1f}" stroke="{GRID}" stroke-width="1"/>')
+            body.append(svg_text(left - 8, gy + 3.5, str(v), size=10, fill=MUTED, anchor="end", tabular=True))
+    body.append(svg_text(left - 8, top - 14, "Gbps per exchange", size=10, fill=MUTED, anchor="start"))
+    body.append(svg_text((left + width - right) / 2, height - 14, "internet exchanges present at", size=10, fill=MUTED, anchor="middle"))
+    body.append(f'<line x1="{left}" y1="{height - bottom}" x2="{width - right}" y2="{height - bottom}" stroke="{BASELINE}" stroke-width="1"/>')
+
+    placed: list[tuple[float, float, float]] = []
+    for name, breadth, depth, total in sorted(pts, key=lambda p: -p[3]):
+        x, y = x_of(breadth), y_of(depth)
+        r = 5 + 16 * (total / vmax) ** 0.5
+        colour = NET_COLOUR.get(name, NET_OTHER)
+        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{colour}" fill-opacity="0.55" stroke="{SURFACE}" stroke-width="2"/>')
+        label = f"{name} {total:.0f}T"
+        half = len(label) * 2.9
+        ly = y - r - 6
+        # lift the label until it clears every one already placed
+        while any(abs(ly - py) < 12 and not (x + half < px - pw or x - half > px + pw) for px, pw, py in placed):
+            ly -= 12
+        placed.append((x, half, ly))
+        body.append(svg_text(x, ly, label, size=10, fill=INK2, anchor="middle", weight="600"))
+    body.append(svg_text(24, height - 4, "source: wss-cloud-footprint · peeringdb.networks.capacity · declared capacity, not measured traffic", size=10, fill=MUTED))
+    out.write_text(wrap(width, height, "Two ways to build a network",
+                        "Scatter of internet exchanges present at against average declared capacity per exchange, bubble area total capacity.", "\n".join(body)), encoding="utf-8")
+    return f"{out.relative_to(REPO)} — {len(pts)} networks"
+
+
+def capacity_history(out: Path, needed: int = 4) -> str:
+    """Declared capacity over time — or an honest placeholder until it exists.
+
+    The repo is longitudinal; the chart should advertise that on day one
+    rather than appearing months later, so it renders either way.
+    """
+    data = capacity_rows()
+    if not data:
+        return "capacity-history.svg skipped: no capacity observations yet"
+    dates = sorted({d for d, _, _ in data})
+    series = {}
+    for d, n, v in data:
+        series.setdefault(n, {})[d] = v
+    top = sorted(series, key=lambda n: -max(series[n].values()))[:4]
+
+    width, height = 900.0, 420.0
+    left, right, top_pad, bottom = 70.0, 168.0, 104.0, 56.0
+    vmax = max(v for _, _, v in data) / 1e6 * 1.15
+    body = [
+        svg_text(24, 30, "Declared capacity over time", size=16, fill=INK, weight="600"),
+        svg_text(24, 50, f"Tbps per network, one point per weekly capture · {len(dates)} capture(s) so far", size=12, fill=INK2),
+    ]
+    if len(dates) < needed:
+        body.append(svg_text(24, 70, f"Not a chart yet — it needs {needed - len(dates)} more weekly capture(s).", size=11, fill=MUTED))
+        body.append(f'<rect x="{left}" y="{top_pad}" width="{width - left - right:.1f}" height="{height - top_pad - bottom:.1f}" fill="#f4f4f0" rx="6"/>')
+        msg = [
+            "Nobody publishes this history — not AWS, not PeeringDB.",
+            "There is no window to page back through and no archive to import.",
+            f"The series starts on {dates[0]} because that is the day capture started.",
+            "",
+            "Today's values, which become the first point:",
+        ]
+        for i, line in enumerate(msg):
+            body.append(svg_text(left + 24, top_pad + 34 + i * 19, line, size=12, fill=INK2 if i < 3 else INK2, weight="normal"))
+        for i, n in enumerate(top):
+            v = max(series[n].values()) / 1e6
+            y = top_pad + 34 + (len(msg) + i) * 19
+            body.append(f'<circle cx="{left + 30}" cy="{y - 4}" r="5" fill="{NET_COLOUR.get(n, NET_OTHER)}"/>')
+            body.append(svg_text(left + 44, y, f"{n} — {v:.1f} Tbps", size=12, fill=INK, weight="600"))
+    else:
+        d0, d1 = dates[0], dates[-1]
+        import datetime as _dt
+        o0, o1 = _dt.date.fromisoformat(d0).toordinal(), _dt.date.fromisoformat(d1).toordinal()
+        x_of = lambda d: left + (_dt.date.fromisoformat(d).toordinal() - o0) / max(1, o1 - o0) * (width - left - right)  # noqa: E731
+        y_of = lambda v: (height - bottom) - v / vmax * (height - bottom - top_pad)  # noqa: E731
+        for tick in range(0, int(vmax) + 20, 20):
+            gy = y_of(tick)
+            body.append(f'<line x1="{left}" y1="{gy:.1f}" x2="{width - right}" y2="{gy:.1f}" stroke="{GRID}" stroke-width="1"/>')
+            body.append(svg_text(left - 8, gy + 3.5, str(tick), size=10, fill=MUTED, anchor="end", tabular=True))
+        for n in top:
+            pts = [(x_of(d), y_of(series[n][d] / 1e6)) for d in sorted(series[n])]
+            body.append(f'<polyline points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in pts)}" fill="none" stroke="{NET_COLOUR.get(n, NET_OTHER)}" stroke-width="2" stroke-linejoin="round"/>')
+            x, y = pts[-1]
+            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{NET_COLOUR.get(n, NET_OTHER)}" stroke="{SURFACE}" stroke-width="2"/>')
+            body.append(svg_text(x + 10, y + 3.5, f"{n} {series[n][dates[-1]]/1e6:.1f}T", size=11, fill=INK, weight="600"))
+        body.append(f'<line x1="{left}" y1="{height - bottom}" x2="{width - right}" y2="{height - bottom}" stroke="{BASELINE}" stroke-width="1"/>')
+    body.append(svg_text(24, height - 8, "source: wss-cloud-footprint · peeringdb.networks.capacity · declared capacity, not measured traffic", size=10, fill=MUTED))
+    out.write_text(wrap(width, height, "Declared capacity over time",
+                        "Line chart of declared interconnection capacity per network across weekly captures.", "\n".join(body)), encoding="utf-8")
+    return f"{out.relative_to(REPO)} — {len(dates)} capture(s)" + ("" if len(dates) >= needed else f", placeholder until {needed}")
+
+
 def main() -> int:
     argparse.ArgumentParser(description=__doc__).parse_args()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -222,6 +373,8 @@ def main() -> int:
     )[:20]
     universal = sum(1 for _, v in services if v == len(regions))
     print(region_gap(OUT_DIR / "region-gap.svg"))
+    print(network_strategy(OUT_DIR / "network-strategy.svg"))
+    print(capacity_history(OUT_DIR / "capacity-history.svg"))
     print(
         ranked_bars(
             frontier,

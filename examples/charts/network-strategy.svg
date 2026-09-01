@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900.0" height="470.0" viewBox="0 0 900.0 470.0" role="img" aria-label="Two ways to build a network">
+<title>Two ways to build a network</title>
+<desc>Scatter of internet exchanges present at against average declared capacity per exchange, bubble area total capacity.</desc>
+<rect width="900.0" height="470.0" fill="#fcfcfb"/>
+<text x="24.0" y="30.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">Two ways to build a network</text>
+<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">exchanges reached against average capacity at each · snapshot 2026-09-01</text>
+<text x="24.0" y="70.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#898781" text-anchor="start" font-weight="normal" style="">right = present in more places · up = heavier at each one · bubble area = total declared capacity</text>
+<line x1="241.0" y1="96.0" x2="241.0" y2="412.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="241.0" y="430.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">100</text>
+<line x1="412.1" y1="96.0" x2="412.1" y2="412.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="412.1" y="430.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">200</text>
+<line x1="583.1" y1="96.0" x2="583.1" y2="412.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="583.1" y="430.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">300</text>
+<line x1="70.0" y1="339.4" x2="750.0" y2="339.4" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="342.9" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="end" font-weight="normal" style="font-variant-numeric: tabular-nums;">100</text>
+<line x1="70.0" y1="266.9" x2="750.0" y2="266.9" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="270.4" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="end" font-weight="normal" style="font-variant-numeric: tabular-nums;">200</text>
+<line x1="70.0" y1="194.3" x2="750.0" y2="194.3" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="197.8" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="end" font-weight="normal" style="font-variant-numeric: tabular-nums;">300</text>
+<line x1="70.0" y1="121.7" x2="750.0" y2="121.7" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="125.2" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="end" font-weight="normal" style="font-variant-numeric: tabular-nums;">400</text>
+<text x="62.0" y="90.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">Gbps per exchange</text>
+<text x="410.0" y="456.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="">internet exchanges present at</text>
+<line x1="70.0" y1="412.0" x2="750.0" y2="412.0" stroke="#c3c2b7" stroke-width="1"/>
+<circle cx="497.6" cy="175.7" r="21.0" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="497.6" y="148.7" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">akamai 81T</text>
+<circle cx="427.4" cy="144.2" r="20.6" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="427.4" y="117.6" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">meta 77T</text>
+<circle cx="353.9" cy="183.0" r="17.8" fill="#1baf7a" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="353.9" y="159.1" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">aws 52T</text>
+<circle cx="677.1" cy="306.2" r="17.8" fill="#4a3aa7" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="677.1" y="282.5" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">cloudflare 52T</text>
+<circle cx="328.2" cy="180.6" r="17.3" fill="#b8b7b0" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="328.2" y="145.3" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">fastly 48T</text>
+<circle cx="422.3" cy="270.4" r="16.2" fill="#b8b7b0" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="422.3" y="248.1" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">microsoft 40T</text>
+<circle cx="371.0" cy="288.5" r="14.7" fill="#b8b7b0" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="371.0" y="267.8" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">google 30T</text>
+<circle cx="140.1" cy="267.6" r="10.1" fill="#b8b7b0" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="140.1" y="251.5" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">digitalocean 8T</text>
+<circle cx="128.1" cy="315.7" r="8.8" fill="#b8b7b0" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="128.1" y="301.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">oracle 5T</text>
+<text x="24.0" y="466.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">source: wss-cloud-footprint · peeringdb.networks.capacity · declared capacity, not measured traffic</text>
+</svg>

@@ -43,6 +43,27 @@ needs more weeks) · **answerable** (enough history exists) · **answered**
 | Q6 | What is the **opening kit** — the services AWS treats as the minimum viable region — and is it growing? | answerable now (102 services) | `aws.services.regional` (`available`) |
 | Q7 | For a given region, exactly which services are missing? The deployability question. | answerable now | `aws.services.regional` (`available`) |
 
+### When to extend the registry
+
+One test: **which open question does this source close?** If the answer is
+"none", the source does not go in — add the question first and justify it, or
+drop the idea. That rule is what stopped this repo from collecting four more
+vendors' IP-range files, which were easy to fetch and would have answered
+nothing.
+
+By that test the remaining work is narrow:
+
+- **Q3** needs per-region service depth for a second vendor. Azure publishes a
+  products-by-region page (HTML, ~168 KB); GCP's regions page redirects. Both
+  need `wss explore` to find a JSON endpoint behind them.
+- **Q4** needs instance-type catalogues, and is blocked on credentials — see
+  below.
+- **Q8/Q9** are already served by the PeeringDB sources; they need weeks, not
+  new endpoints.
+
+Everything else — more IP ranges, facility records at 5.7 MB a week, status
+pages that vendors already archive — fails the test today.
+
 ### Q4 is blocked, and that is worth recording
 
 Instance types per region are not publicly available without credentials.
@@ -88,6 +109,20 @@ services while the newest regions carry ~105.
 ![AWS region maturity](examples/charts/region-maturity.svg)
 
 ![The rollout frontier](examples/charts/rollout-frontier.svg)
+
+![Two ways to build a network](examples/charts/network-strategy.svg)
+
+Same total capacity can be spread thin or stacked deep, and that is a
+strategy choice. **Cloudflare reaches 355 exchanges at ~146 Gbps each**;
+Meta reaches 209 at ~369. Akamai does both — most capacity *and* near-Cloudflare
+reach. Oracle and DigitalOcean are an order of magnitude smaller on both axes.
+
+![Declared capacity over time](examples/charts/capacity-history.svg)
+
+That placeholder is deliberate. **Nobody publishes this history** — not AWS,
+not PeeringDB. There is no window to page back through and no archive to
+import, so the series can only start on the day capture started. The chart
+renders itself the moment four weekly captures exist.
 
 ![What a new region still lacks](examples/charts/region-gap.svg)
 
