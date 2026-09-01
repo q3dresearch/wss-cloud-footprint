@@ -8,6 +8,40 @@ AWS publishes only the *current* table. There is no historical version, so
 **the date a service reached a region is unrecoverable after the fact** —
 unless someone was writing it down. This repo writes it down.
 
+## Research questions
+
+The point of this repo is the questions, not the folders. Every source below
+exists to answer one; a source that answers none should be dropped, and a
+question nothing answers is the next thing to build. **Append freely** — an
+open question with no data is a useful entry, not a gap to hide.
+
+Status is one of: **open** (nothing captured yet) · **accruing** (captured,
+needs more weeks) · **answerable** (enough history exists) · **answered**
+(with the finding linked).
+
+| # | Question | Status | Answered by |
+| --- | --- | --- | --- |
+| Q1 | When a provider opens a region, how long until it reaches service parity — and which regions never do? | accruing (needs ~12 weeks) | `aws.services.regional` |
+| Q2 | Which services **stall**? A service stuck in few regions for months is being quietly abandoned, which matters if you depend on it. | accruing (needs ~12 weeks) | `aws.services.regional` |
+| Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? Oracle advertises 56 regions to AWS's 37 — but AWS's largest carries 195 services. | open — needs per-region service depth for a second vendor | nothing yet |
+| Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first, and how fast do they spread? | open — needs instance-type catalogues, not IP ranges | nothing yet |
+| Q5 | Does network address space lead or lag service availability? Does a region get addresses before it gets services? | accruing | `aws.infra.ip-ranges` + `aws.services.regional` |
+
+### A note on what this repo deliberately does *not* chase
+
+IP prefix counts are **allocation, not utilisation** — a provider can announce
+a large block and use a fraction of it. They are captured only because Q5 is a
+genuine question about sequencing, and because AWS never republishes them.
+They are not a proxy for capacity, and this repo will not present them as one.
+
+Several vendors publish IP ranges in near-identical shape (GCP, Oracle,
+Linode, DigitalOcean), which makes multi-vendor capture *easy*. Easy is not a
+reason. Cloudflare and Fastly publish ~400 bytes of aggregate CIDR with no
+location at all, so capturing them would answer nothing; Heroku runs on AWS,
+so its footprint is already counted here. The multi-vendor work that would
+actually pay is **Q3 and Q4** — service depth and instance types per vendor —
+not more address space.
+
 ## Why this is a signal, not trivia
 
 A new `(service, region)` pair appearing means AWS stood that service up in
