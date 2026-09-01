@@ -5,14 +5,14 @@
 
 Two charts, written to examples/charts/:
 
-  region-maturity.svg   services available per AWS region, ranked — what you
-                        give up by deploying somewhere other than us-east-1
   rollout-frontier.svg  the services in the fewest regions — where AWS is
                         currently expanding, and what has stalled
   region-gap.svg        what a newly opened region still lacks, and how much
                         of the catalogue ships as the "opening kit"
   network-strategy.svg  breadth against depth of interconnection — who is
                         everywhere-and-thin, who is concentrated-and-deep
+  metro-concentration.svg  is a metro shared by everyone or owned by one
+                        network — saturation against territorial dominance
   capacity-history.svg  declared capacity per network over time. Renders a
                         placeholder until enough captures exist; this repo is
                         longitudinal, and the chart should say so from day one
@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from collections import defaultdict
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -196,7 +197,17 @@ def region_gap(out: Path, thinnest: int = 4) -> str:
     return f"{out.relative_to(REPO)} — {len(data)} regions, opening kit {len(kit)} services"
 
 
-NET_COLOUR = {"akamai": "#2a78d6", "meta": "#eb6834", "aws": "#1baf7a", "cloudflare": "#4a3aa7"}
+# Colour carries the network's *kind*, not its identity — identity is already
+# on every bubble as a direct label, so spending colour on it would be waste.
+# Three classes, which is also the all-pairs colour-vision limit.
+NET_KIND = {
+    "aws": "cloud", "google": "cloud", "microsoft": "cloud",
+    "oracle": "cloud", "digitalocean": "cloud",
+    "cloudflare": "cdn", "fastly": "cdn", "akamai": "cdn",
+    "meta": "content",
+}
+KIND_COLOUR = {"cloud": "#2a78d6", "cdn": "#eb6834", "content": "#1baf7a"}
+KIND_LABEL = {"cloud": "enterprise cloud", "cdn": "CDN / edge", "content": "content network"}
 NET_OTHER = "#b8b7b0"
 
 
@@ -234,7 +245,7 @@ def network_strategy(out: Path) -> str:
     pts = [(n, exch[n], cap[n] / exch[n] / 1000, cap[n] / 1e6) for n in cap if exch.get(n)]
 
     width, height = 900.0, 470.0
-    left, right, top, bottom = 70.0, 150.0, 104.0, 58.0
+    left, right, top, bottom = 70.0, 150.0, 122.0, 58.0
     xmax = max(p[1] for p in pts) * 1.12
     ymax = max(p[2] for p in pts) * 1.15
     vmax = max(p[3] for p in pts)
@@ -246,6 +257,7 @@ def network_strategy(out: Path) -> str:
         svg_text(24, 50, f"exchanges reached against average capacity at each · snapshot {latest[:10]}", size=12, fill=INK2),
         svg_text(24, 70, "right = present in more places · up = heavier at each one · bubble area = total declared capacity", size=11, fill=MUTED),
     ]
+    body += legend([(KIND_LABEL[k], KIND_COLOUR[k]) for k in ("cloud", "cdn", "content")], 94)
     for v in range(0, int(xmax), 100):
         if v:
             gx = x_of(v)
@@ -264,7 +276,7 @@ def network_strategy(out: Path) -> str:
     for name, breadth, depth, total in sorted(pts, key=lambda p: -p[3]):
         x, y = x_of(breadth), y_of(depth)
         r = 5 + 16 * (total / vmax) ** 0.5
-        colour = NET_COLOUR.get(name, NET_OTHER)
+        colour = KIND_COLOUR.get(NET_KIND.get(name), NET_OTHER)
         body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{colour}" fill-opacity="0.55" stroke="{SURFACE}" stroke-width="2"/>')
         label = f"{name} {total:.0f}T"
         half = len(label) * 2.9
@@ -278,6 +290,94 @@ def network_strategy(out: Path) -> str:
     out.write_text(wrap(width, height, "Two ways to build a network",
                         "Scatter of internet exchanges present at against average declared capacity per exchange, bubble area total capacity.", "\n".join(body)), encoding="utf-8")
     return f"{out.relative_to(REPO)} — {len(pts)} networks"
+
+
+def metro_capacity():
+    """(metro -> {network: Mbps}) using the exchange's city as the key."""
+    rows_ = []
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
+        with partition.open(encoding="utf-8", newline="") as fh:
+            rows_.extend(csv.DictReader(fh))
+    latest = max((r["observed_at"] for r in rows_ if r["metric"] == "declared_capacity"), default=None)
+    if not latest:
+        return {}
+    city = {r["entity_id"]: r["value"] for r in rows_ if r["metric"] == "city"}
+    per = defaultdict(lambda: defaultdict(int))
+    for r in rows_:
+        if r["metric"] == "declared_capacity" and r["observed_at"] == latest:
+            net, ix = r["entity_id"][4:].split("/ix:", 1)
+            metro = city.get(f"ix:{ix}")
+            if metro:
+                per[metro][net] += int(r["value"])
+    return per
+
+
+def metro_concentration(out: Path, floor_tbps: float = 1.0) -> str:
+    """Shared or owned? The largest network's share, against metro size.
+
+    Left means many networks split the metro; right means one holds most of
+    it. The practical question behind it: a disaster-recovery metro served
+    by a single network is not multi-cloud, whatever the contract says.
+    """
+    import math
+    per = metro_capacity()
+    pts = []
+    for metro, nets in per.items():
+        total = sum(nets.values())
+        if total < floor_tbps * 1e6:
+            continue
+        leader, lead = max(nets.items(), key=lambda kv: kv[1])
+        pts.append((metro, total / 1e6, lead / total, len(nets), leader))
+    if len(pts) < 5:
+        return "metro-concentration.svg skipped: too few metros yet"
+
+    width, height = 920.0, 500.0
+    left, right, top, bottom = 74.0, 44.0, 116.0, 58.0
+    xmin, xmax = min(p[2] for p in pts) * 0.95, max(p[2] for p in pts) * 1.04
+    ymin, ymax = min(p[1] for p in pts), max(p[1] for p in pts) * 1.2
+    x_of = lambda v: left + (v - xmin) / (xmax - xmin) * (width - left - right)
+    y_of = lambda v: (height - bottom) - (math.log10(v) - math.log10(ymin)) / (math.log10(ymax) - math.log10(ymin)) * (height - bottom - top)
+
+    body = [
+        svg_text(24, 30, "Shared, or owned?", size=16, fill=INK, weight="600"),
+        svg_text(24, 50, f"{len(pts)} metros above {floor_tbps:g} Tbps \u00b7 horizontal = the largest network's share of that metro", size=12, fill=INK2),
+        svg_text(24, 70, "left = many networks split it \u00b7 right = one network holds most of it \u00b7 colour = kind of network leading", size=11, fill=MUTED),
+    ]
+    kinds = sorted({NET_KIND.get(p[4], "other") for p in pts})
+    body += legend([(KIND_LABEL.get(k, k), KIND_COLOUR.get(k, NET_OTHER)) for k in kinds], 94)
+    for frac in (0.2, 0.3, 0.4, 0.5, 0.6, 0.7):
+        if xmin <= frac <= xmax:
+            gx = x_of(frac)
+            body.append(f'<line x1="{gx:.1f}" y1="{top - 8}" x2="{gx:.1f}" y2="{height - bottom}" stroke="{GRID}" stroke-width="1"/>')
+            body.append(svg_text(gx, height - bottom + 18, f"{frac * 100:.0f}%", size=10, fill=MUTED, anchor="middle", tabular=True))
+    for v in (1, 2, 5, 10, 20):
+        if ymin <= v <= ymax:
+            gy = y_of(v)
+            body.append(f'<line x1="{left}" y1="{gy:.1f}" x2="{width - right}" y2="{gy:.1f}" stroke="{GRID}" stroke-width="1"/>')
+            body.append(svg_text(left - 8, gy + 3.5, f"{v}T", size=10, fill=MUTED, anchor="end", tabular=True))
+    body.append(svg_text(left - 8, top - 14, "metro capacity", size=10, fill=MUTED, anchor="start"))
+    body.append(svg_text((left + width - right) / 2, height - 14, "largest network's share of the metro  \u2192  more concentrated", size=10, fill=MUTED, anchor="middle"))
+    body.append(f'<line x1="{left}" y1="{height - bottom}" x2="{width - right}" y2="{height - bottom}" stroke="{BASELINE}" stroke-width="1"/>')
+
+    placed = []
+    for metro, total, share, nets, leader in sorted(pts, key=lambda p: -p[1]):
+        x, y = x_of(share), y_of(total)
+        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{KIND_COLOUR.get(NET_KIND.get(leader), NET_OTHER)}" fill-opacity="0.8" stroke="{SURFACE}" stroke-width="2"/>')
+        if len(placed) < 12:
+            label = metro.split("/")[0]
+            w = len(label) * 6.4 + 6
+            if x + 9 + w > width - right:
+                lx, anchor, x0, x1 = x - 9, "end", x - 9 - w, x - 9
+            else:
+                lx, anchor, x0, x1 = x + 9, "start", x + 9, x + 9 + w
+            if any(abs(y - py) < 12 and not (x1 < bx0 or x0 > bx1) for bx0, bx1, py in placed):
+                continue
+            body.append(svg_text(lx, y + 3.5, label, size=10, fill=INK2, anchor=anchor))
+            placed.append((x0, x1, y))
+    body.append(svg_text(24, height - 4, "source: wss-cloud-footprint \u00b7 peeringdb \u00b7 declared capacity, not measured traffic", size=10, fill=MUTED))
+    out.write_text(wrap(width, height, "Shared, or owned?",
+                        "Scatter of metro total declared capacity against the largest network's share of that metro.", "\n".join(body)), encoding="utf-8")
+    return f"{out.relative_to(REPO)} \u2014 {len(pts)} metros"
 
 
 def capacity_history(out: Path, needed: int = 4) -> str:
@@ -317,7 +417,7 @@ def capacity_history(out: Path, needed: int = 4) -> str:
         for i, n in enumerate(top):
             v = max(series[n].values()) / 1e6
             y = top_pad + 34 + (len(msg) + i) * 19
-            body.append(f'<circle cx="{left + 30}" cy="{y - 4}" r="5" fill="{NET_COLOUR.get(n, NET_OTHER)}"/>')
+            body.append(f'<circle cx="{left + 30}" cy="{y - 4}" r="5" fill="{KIND_COLOUR.get(NET_KIND.get(n), NET_OTHER)}"/>')
             body.append(svg_text(left + 44, y, f"{n} — {v:.1f} Tbps", size=12, fill=INK, weight="600"))
     else:
         d0, d1 = dates[0], dates[-1]
@@ -331,15 +431,58 @@ def capacity_history(out: Path, needed: int = 4) -> str:
             body.append(svg_text(left - 8, gy + 3.5, str(tick), size=10, fill=MUTED, anchor="end", tabular=True))
         for n in top:
             pts = [(x_of(d), y_of(series[n][d] / 1e6)) for d in sorted(series[n])]
-            body.append(f'<polyline points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in pts)}" fill="none" stroke="{NET_COLOUR.get(n, NET_OTHER)}" stroke-width="2" stroke-linejoin="round"/>')
+            body.append(f'<polyline points="{" ".join(f"{x:.1f},{y:.1f}" for x, y in pts)}" fill="none" stroke="{KIND_COLOUR.get(NET_KIND.get(n), NET_OTHER)}" stroke-width="2" stroke-linejoin="round"/>')
             x, y = pts[-1]
-            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{NET_COLOUR.get(n, NET_OTHER)}" stroke="{SURFACE}" stroke-width="2"/>')
+            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5" fill="{KIND_COLOUR.get(NET_KIND.get(n), NET_OTHER)}" stroke="{SURFACE}" stroke-width="2"/>')
             body.append(svg_text(x + 10, y + 3.5, f"{n} {series[n][dates[-1]]/1e6:.1f}T", size=11, fill=INK, weight="600"))
         body.append(f'<line x1="{left}" y1="{height - bottom}" x2="{width - right}" y2="{height - bottom}" stroke="{BASELINE}" stroke-width="1"/>')
     body.append(svg_text(24, height - 8, "source: wss-cloud-footprint · peeringdb.networks.capacity · declared capacity, not measured traffic", size=10, fill=MUTED))
     out.write_text(wrap(width, height, "Declared capacity over time",
                         "Line chart of declared interconnection capacity per network across weekly captures.", "\n".join(body)), encoding="utf-8")
     return f"{out.relative_to(REPO)} — {len(dates)} capture(s)" + ("" if len(dates) >= needed else f", placeholder until {needed}")
+
+
+def rollout_frontier(out: Path, frontier, n_regions: int, universal: int, n_services: int) -> str:
+    """Services in the fewest regions — and, for the thinnest, exactly where.
+
+    A bare count answers "how far has this spread" but not the question that
+    follows immediately: spread *where*? For anything in six regions or
+    fewer the regions are named outright, because at that size the list is
+    the finding.
+    """
+    member = membership()
+    where = defaultdict(list)
+    for region, services in member.items():
+        for s in services:
+            where[s].append(region)
+
+    width, left, right, top = 940.0, 250.0, 300.0, 92.0
+    bar_h, gap = 14.0, 6.0
+    height = top + len(frontier) * (bar_h + gap) + 40
+    span = width - left - right
+    body = [
+        svg_text(24, 30, "The rollout frontier", size=16, fill=INK, weight="600"),
+        svg_text(24, 50, f"the {len(frontier)} least-distributed AWS services, by how many of {n_regions} regions carry them", size=12, fill=INK2),
+        svg_text(24, 70, f"for context, {universal} of {n_services} services are already in every region — these are the ones still moving, or stalled", size=11, fill=MUTED),
+    ]
+    for tick in range(0, n_regions + 1, 5):
+        gx = left + tick / n_regions * span
+        body.append(f'<line x1="{gx:.1f}" y1="{top - 8}" x2="{gx:.1f}" y2="{height - 34}" stroke="{GRID}" stroke-width="1"/>')
+        body.append(svg_text(gx, height - 20, str(tick), size=10, fill=MUTED, anchor="middle", tabular=True))
+    body.append(f'<line x1="{left}" y1="{top - 8}" x2="{left}" y2="{height - 34}" stroke="{BASELINE}" stroke-width="1"/>')
+    for i, (name, count) in enumerate(frontier):
+        y = top + i * (bar_h + gap)
+        w = max(1.5, count / n_regions * span)
+        body.append(bar(left, y, w, bar_h, HUE))
+        label = name if len(name) <= 32 else name[:31].rstrip(" (") + "…"
+        body.append(svg_text(left - 10, y + bar_h - 3, label, size=11, fill=INK2, anchor="end"))
+        regions = sorted(where.get(name, []))
+        detail = ", ".join(regions) if 0 < len(regions) <= 6 else f"{count} regions"
+        body.append(svg_text(left + w + 7, y + bar_h - 3, detail[:52], size=10, fill=INK if len(regions) <= 6 else MUTED, tabular=True))
+    body.append(svg_text(24, height - 6, "source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0", size=10, fill=MUTED))
+    out.write_text(wrap(width, height, "The rollout frontier",
+                        "Ranked bar chart of AWS services present in the fewest regions, naming the regions for the thinnest.", "\n".join(body)), encoding="utf-8")
+    return f"{out.relative_to(REPO)} — {len(frontier)} services"
 
 
 def main() -> int:
@@ -350,22 +493,6 @@ def main() -> int:
     if not regions:
         print("no observations yet — run capture + derive first")
         return 1
-    total_services = max(v for _, v in regions)
-    thin = sum(1 for _, v in regions if v < total_services * 0.7)
-    print(
-        ranked_bars(
-            regions,
-            OUT_DIR / "region-maturity.svg",
-            title="AWS region maturity",
-            subtitle=(
-                f"services available per region · {len(regions)} regions · snapshot {as_of} · "
-                f"darker = below 70% of full coverage ({thin} regions)"
-            ),
-            caption="source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0",
-            desc="Ranked bar chart of the number of AWS services available in each region.",
-            highlight=thin,
-        )
-    )
 
     services, _ = load("regions_available")
     frontier = sorted(
@@ -374,21 +501,9 @@ def main() -> int:
     universal = sum(1 for _, v in services if v == len(regions))
     print(region_gap(OUT_DIR / "region-gap.svg"))
     print(network_strategy(OUT_DIR / "network-strategy.svg"))
+    print(metro_concentration(OUT_DIR / "metro-concentration.svg"))
     print(capacity_history(OUT_DIR / "capacity-history.svg"))
-    print(
-        ranked_bars(
-            frontier,
-            OUT_DIR / "rollout-frontier.svg",
-            title="The rollout frontier",
-            subtitle=(
-                f"the 20 least-distributed AWS services · "
-                f"{universal} of {len(services)} services are already in all {len(regions)} regions"
-            ),
-            caption="source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0",
-            desc="Ranked bar chart of AWS services present in the fewest regions.",
-            axis_max=len(regions),
-        )
-    )
+    print(rollout_frontier(OUT_DIR / "rollout-frontier.svg", frontier, len(regions), universal, len(services)))
     return 0
 
 

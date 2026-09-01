@@ -1,10 +1,10 @@
-# Internet exchanges with their metro and continent. PeeringDB is a live
-# register: it shows the world as it is now, with no public historical
-# snapshots, so the date an exchange appeared or grew is unrecoverable.
-source_id: peeringdb.exchanges.directory
+# Datacenter facilities with real coordinates. This is the map layer: it turns
+# an exchange's city name into a point on the earth without a hand-maintained
+# lookup table that would rot.
+source_id: peeringdb.facilities.geo
 status: active
 cadence: weekly
-schema_id: pdb-exchanges.v1
+schema_id: pdb-facilities.v1
 
 publisher: PeeringDB
 publisher_tier: primary
@@ -17,13 +17,14 @@ storage: git
 # requests, weekly cadence, and one shard: this repo should be invisible in
 # their logs. A 429 here means back off, not retry harder.
 notes: >-
-  The location layer. Exchange records carry city, country and continent,
-  which turns the capacity source below into a map. Requested with an
-  explicit `fields=` list because the full record contains operator contact
-  emails — this repo captures none of them.
+  5,860 facilities, ~5,256 with coordinates, across ~2,066 cities. Requested
+  with an explicit fields= list: the full record carries operator contact
+  details, and this repo fetches none of them. Also the reason a map needs no
+  basemap package — plotted at (longitude, latitude) the facilities trace the
+  populated world themselves.
 
 endpoints:
-  - url: "https://www.peeringdb.com/api/ix?fields=id,name,city,country,region_continent,net_count,fac_count"
+  - url: "https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count"
     delay_seconds: 15
 
 # The gate guards the field names, not the "@" character: facility names
@@ -31,8 +32,8 @@ endpoints:
 # appear is an email FIELD, which would mean the API ignored fields=.
 gates:
   expect_status: 200
-  min_bytes: 50000
+  min_bytes: 300000
   content_type_any: [json]
-  must_contain: ["region_continent"]
+  must_contain: ["latitude"]
   must_not_contain: ["Access Denied", "tech_email", "policy_email", "sales_email"]
   max_shrink_pct: 30

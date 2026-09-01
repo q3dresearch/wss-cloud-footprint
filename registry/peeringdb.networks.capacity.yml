@@ -13,6 +13,9 @@ licence: "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before 
 personal_data: none
 storage: git
 
+# PeeringDB is a volunteer-run non-profit, not a vendor API. 15s between
+# requests, weekly cadence, and one shard: this repo should be invisible in
+# their logs. A 429 here means back off, not retry harder.
 notes: >-
   IMPORTANT — this is DECLARED PORT CAPACITY, not measured traffic. It is what
   an operator has provisioned at an exchange, not what flows across it. Nobody
@@ -23,7 +26,7 @@ notes: >-
 
 endpoints:
   - url: "https://www.peeringdb.com/api/netixlan?asn__in=16509,15169,8075,13335,54113,32934,31898,14061,20940&limit=5000&fields=asn,ix_id,name,speed,operational,is_rs_peer"
-    delay_seconds: 3
+    delay_seconds: 15
 
 gates:
   expect_status: 200

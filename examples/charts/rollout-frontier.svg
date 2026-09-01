@@ -1,77 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900.0" height="508.0" viewBox="0 0 900.0 508.0" role="img" aria-label="The rollout frontier">
+<svg xmlns="http://www.w3.org/2000/svg" width="940.0" height="532.0" viewBox="0 0 940.0 532.0" role="img" aria-label="The rollout frontier">
 <title>The rollout frontier</title>
-<desc>Ranked bar chart of AWS services present in the fewest regions.</desc>
-<rect width="900.0" height="508.0" fill="#fcfcfb"/>
+<desc>Ranked bar chart of AWS services present in the fewest regions, naming the regions for the thinnest.</desc>
+<rect width="940.0" height="532.0" fill="#fcfcfb"/>
 <text x="24.0" y="30.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">The rollout frontier</text>
-<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">the 20 least-distributed AWS services · 100 of 195 services are already in all 37 regions</text>
-<line x1="210.0" y1="66.0" x2="210.0" y2="478.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="210.0" y="492.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">0</text>
-<line x1="370.5" y1="66.0" x2="370.5" y2="478.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="370.5" y="492.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">10</text>
-<line x1="531.1" y1="66.0" x2="531.1" y2="478.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="531.1" y="492.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">20</text>
-<line x1="691.6" y1="66.0" x2="691.6" y2="478.0" stroke="#e1e0d9" stroke-width="1"/>
-<text x="691.6" y="492.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">30</text>
-<line x1="210.0" y1="66.0" x2="210.0" y2="478.0" stroke="#c3c2b7" stroke-width="1"/>
-<path d="M210.0,74.0 h44.2 q4,0 4,4 v6.0 q0,4 -4,4 h-44.2 z" fill="#2a78d6"/>
-<text x="200.0" y="85.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Connect Health</text>
-<text x="265.2" y="85.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">3</text>
-<path d="M210.0,94.0 h60.2 q4,0 4,4 v6.0 q0,4 -4,4 h-60.2 z" fill="#2a78d6"/>
-<text x="200.0" y="105.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Q Business</text>
-<text x="281.2" y="105.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">4</text>
-<path d="M210.0,114.0 h60.2 q4,0 4,4 v6.0 q0,4 -4,4 h-60.2 z" fill="#2a78d6"/>
-<text x="200.0" y="125.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Q Developer</text>
-<text x="281.2" y="125.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">4</text>
-<path d="M210.0,134.0 h76.3 q4,0 4,4 v6.0 q0,4 -4,4 h-76.3 z" fill="#2a78d6"/>
-<text x="200.0" y="145.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Braket</text>
-<text x="297.3" y="145.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">5</text>
-<path d="M210.0,154.0 h108.4 q4,0 4,4 v6.0 q0,4 -4,4 h-108.4 z" fill="#2a78d6"/>
-<text x="200.0" y="165.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Interactive Video Service…</text>
-<text x="329.4" y="165.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">7</text>
-<path d="M210.0,174.0 h108.4 q4,0 4,4 v6.0 q0,4 -4,4 h-108.4 z" fill="#2a78d6"/>
-<text x="200.0" y="185.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Managed Blockchain (AMB)</text>
-<text x="329.4" y="185.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">7</text>
-<path d="M210.0,194.0 h140.5 q4,0 4,4 v6.0 q0,4 -4,4 h-140.5 z" fill="#2a78d6"/>
-<text x="200.0" y="205.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS B2B Data Interchange</text>
-<text x="361.5" y="205.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">9</text>
-<path d="M210.0,214.0 h156.5 q4,0 4,4 v6.0 q0,4 -4,4 h-156.5 z" fill="#2a78d6"/>
-<text x="200.0" y="225.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Deadline Cloud</text>
-<text x="377.5" y="225.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">10</text>
-<path d="M210.0,234.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="245.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS App Runner</text>
-<text x="393.6" y="245.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,254.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="265.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS DevOps Agent</text>
-<text x="393.6" y="265.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,274.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="285.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Wickr</text>
-<text x="393.6" y="285.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,294.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="305.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Kendra</text>
-<text x="393.6" y="305.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,314.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="325.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Lex</text>
-<text x="393.6" y="325.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,334.0 h172.6 q4,0 4,4 v6.0 q0,4 -4,4 h-172.6 z" fill="#2a78d6"/>
-<text x="200.0" y="345.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Personalize</text>
-<text x="393.6" y="345.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">11</text>
-<path d="M210.0,354.0 h188.6 q4,0 4,4 v6.0 q0,4 -4,4 h-188.6 z" fill="#2a78d6"/>
-<text x="200.0" y="365.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Audit Manager</text>
-<text x="409.6" y="365.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">12</text>
-<path d="M210.0,374.0 h188.6 q4,0 4,4 v6.0 q0,4 -4,4 h-188.6 z" fill="#2a78d6"/>
-<text x="200.0" y="385.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Ground Station</text>
-<text x="409.6" y="385.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">12</text>
-<path d="M210.0,394.0 h188.6 q4,0 4,4 v6.0 q0,4 -4,4 h-188.6 z" fill="#2a78d6"/>
-<text x="200.0" y="405.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS IoT SiteWise</text>
-<text x="409.6" y="405.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">12</text>
-<path d="M210.0,414.0 h188.6 q4,0 4,4 v6.0 q0,4 -4,4 h-188.6 z" fill="#2a78d6"/>
-<text x="200.0" y="425.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Managed Grafana</text>
-<text x="409.6" y="425.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">12</text>
-<path d="M210.0,434.0 h188.6 q4,0 4,4 v6.0 q0,4 -4,4 h-188.6 z" fill="#2a78d6"/>
-<text x="200.0" y="445.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon SageMaker Ground Truth</text>
-<text x="409.6" y="445.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">12</text>
-<path d="M210.0,454.0 h204.7 q4,0 4,4 v6.0 q0,4 -4,4 h-204.7 z" fill="#2a78d6"/>
-<text x="200.0" y="465.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS CodeArtifact</text>
-<text x="425.7" y="465.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600" style="font-variant-numeric: tabular-nums;">13</text>
-<text x="24.0" y="504.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0</text>
+<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">the 20 least-distributed AWS services, by how many of 37 regions carry them</text>
+<text x="24.0" y="70.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#898781" text-anchor="start" font-weight="normal" style="">for context, 100 of 195 services are already in every region — these are the ones still moving, or stalled</text>
+<line x1="250.0" y1="84.0" x2="250.0" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="250.0" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">0</text>
+<line x1="302.7" y1="84.0" x2="302.7" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="302.7" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">5</text>
+<line x1="355.4" y1="84.0" x2="355.4" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="355.4" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">10</text>
+<line x1="408.1" y1="84.0" x2="408.1" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="408.1" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">15</text>
+<line x1="460.8" y1="84.0" x2="460.8" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="460.8" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">20</text>
+<line x1="513.5" y1="84.0" x2="513.5" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="513.5" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">25</text>
+<line x1="566.2" y1="84.0" x2="566.2" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="566.2" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">30</text>
+<line x1="618.9" y1="84.0" x2="618.9" y2="498.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="618.9" y="512.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="font-variant-numeric: tabular-nums;">35</text>
+<line x1="250.0" y1="84.0" x2="250.0" y2="498.0" stroke="#c3c2b7" stroke-width="1"/>
+<path d="M250.0,92.0 h27.6 q4,0 4,4 v6.0 q0,4 -4,4 h-27.6 z" fill="#2a78d6"/>
+<text x="240.0" y="103.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Connect Health</text>
+<text x="288.6" y="103.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">eu-west-2, us-east-1, us-west-2</text>
+<path d="M250.0,112.0 h38.2 q4,0 4,4 v6.0 q0,4 -4,4 h-38.2 z" fill="#2a78d6"/>
+<text x="240.0" y="123.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Q Business</text>
+<text x="299.2" y="123.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">ap-southeast-2, eu-west-1, us-east-1, us-west-2</text>
+<path d="M250.0,132.0 h38.2 q4,0 4,4 v6.0 q0,4 -4,4 h-38.2 z" fill="#2a78d6"/>
+<text x="240.0" y="143.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Q Developer</text>
+<text x="299.2" y="143.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">eu-central-1, us-east-1, us-gov-east-1, us-gov-west-</text>
+<path d="M250.0,152.0 h48.7 q4,0 4,4 v6.0 q0,4 -4,4 h-48.7 z" fill="#2a78d6"/>
+<text x="240.0" y="163.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Braket</text>
+<text x="309.7" y="163.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">eu-north-1, eu-west-2, us-east-1, us-west-1, us-west</text>
+<path d="M250.0,172.0 h69.8 q4,0 4,4 v6.0 q0,4 -4,4 h-69.8 z" fill="#2a78d6"/>
+<text x="240.0" y="183.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Interactive Video Servic…</text>
+<text x="330.8" y="183.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">7 regions</text>
+<path d="M250.0,192.0 h69.8 q4,0 4,4 v6.0 q0,4 -4,4 h-69.8 z" fill="#2a78d6"/>
+<text x="240.0" y="203.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Managed Blockchain (AMB)</text>
+<text x="330.8" y="203.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">7 regions</text>
+<path d="M250.0,212.0 h90.9 q4,0 4,4 v6.0 q0,4 -4,4 h-90.9 z" fill="#2a78d6"/>
+<text x="240.0" y="223.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS B2B Data Interchange</text>
+<text x="351.9" y="223.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">9 regions</text>
+<path d="M250.0,232.0 h101.4 q4,0 4,4 v6.0 q0,4 -4,4 h-101.4 z" fill="#2a78d6"/>
+<text x="240.0" y="243.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Deadline Cloud</text>
+<text x="362.4" y="243.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">10 regions</text>
+<path d="M250.0,252.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="263.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS App Runner</text>
+<text x="372.9" y="263.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,272.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="283.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS DevOps Agent</text>
+<text x="372.9" y="283.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,292.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="303.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Wickr</text>
+<text x="372.9" y="303.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,312.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="323.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Kendra</text>
+<text x="372.9" y="323.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,332.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="343.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Lex</text>
+<text x="372.9" y="343.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,352.0 h111.9 q4,0 4,4 v6.0 q0,4 -4,4 h-111.9 z" fill="#2a78d6"/>
+<text x="240.0" y="363.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Personalize</text>
+<text x="372.9" y="363.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">11 regions</text>
+<path d="M250.0,372.0 h122.5 q4,0 4,4 v6.0 q0,4 -4,4 h-122.5 z" fill="#2a78d6"/>
+<text x="240.0" y="383.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Audit Manager</text>
+<text x="383.5" y="383.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">12 regions</text>
+<path d="M250.0,392.0 h122.5 q4,0 4,4 v6.0 q0,4 -4,4 h-122.5 z" fill="#2a78d6"/>
+<text x="240.0" y="403.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS Ground Station</text>
+<text x="383.5" y="403.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">12 regions</text>
+<path d="M250.0,412.0 h122.5 q4,0 4,4 v6.0 q0,4 -4,4 h-122.5 z" fill="#2a78d6"/>
+<text x="240.0" y="423.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS IoT SiteWise</text>
+<text x="383.5" y="423.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">12 regions</text>
+<path d="M250.0,432.0 h122.5 q4,0 4,4 v6.0 q0,4 -4,4 h-122.5 z" fill="#2a78d6"/>
+<text x="240.0" y="443.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon Managed Grafana</text>
+<text x="383.5" y="443.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">12 regions</text>
+<path d="M250.0,452.0 h122.5 q4,0 4,4 v6.0 q0,4 -4,4 h-122.5 z" fill="#2a78d6"/>
+<text x="240.0" y="463.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">Amazon SageMaker Ground Truth</text>
+<text x="383.5" y="463.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">12 regions</text>
+<path d="M250.0,472.0 h133.0 q4,0 4,4 v6.0 q0,4 -4,4 h-133.0 z" fill="#2a78d6"/>
+<text x="240.0" y="483.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="end" font-weight="normal" style="">AWS CodeArtifact</text>
+<text x="394.0" y="483.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">13 regions</text>
+<text x="24.0" y="526.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0</text>
 </svg>

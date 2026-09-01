@@ -1,0 +1,4 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+peeringdb.facilities.geo,"https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count",2026-09-01T19:41:23Z,200,application/json,959410,e104dd0205ed678277bc0580f59bbc289613304c3cd2dce7b6ea9c088858cfec,,,quarantined,quarantine/peeringdb.facilities.geo/2026/09/20260901T194123Z-e104dd0205ed.json,contains_forbidden_text,
+peeringdb.facilities.geo,"https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count",2026-09-01T19:44:57Z,,,,,,,error,,retries_exhausted_status_429,
+peeringdb.facilities.geo,"https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count",2026-09-01T19:52:15Z,,,,,,,error,,retries_exhausted_status_429,

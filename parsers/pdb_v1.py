@@ -84,3 +84,36 @@ def parse_capacity(body: bytes, ctx: derive.ParseContext):
 
 derive.register("pdb-exchanges.v1", parse_exchanges, PARSER_VERSION)
 derive.register("pdb-capacity.v1", parse_capacity, PARSER_VERSION)
+
+
+def parse_facilities(body: bytes, ctx: derive.ParseContext):
+    """Facility coordinates, aggregated to the metro that owns them.
+
+    Per-facility rows would be 5,800 mostly-static observations a week to
+    support one join. The metro is the unit every other source keys on, so
+    that is the unit stored: one point per (city, country), with the facility
+    count and the mean position of the buildings in it.
+    """
+    by_metro: dict[tuple, list] = defaultdict(lambda: [0, 0.0, 0.0, 0])
+    for fac in json.loads(body)["data"]:
+        lat, lon = fac.get("latitude"), fac.get("longitude")
+        if lat is None or lon is None:
+            continue
+        key = (fac.get("city") or "", fac.get("country") or "")
+        slot = by_metro[key]
+        slot[0] += 1
+        slot[1] += float(lat)
+        slot[2] += float(lon)
+        slot[3] += int(fac.get("net_count") or 0)
+
+    for (city, country), (count, lat_sum, lon_sum, nets) in sorted(by_metro.items()):
+        if not city:
+            continue
+        entity = f"metro:{country}/{city}"
+        yield derive.Observation(entity_id=entity, metric="facilities", value=count, unit="count")
+        yield derive.Observation(entity_id=entity, metric="networks_at_facilities", value=nets, unit="count")
+        yield derive.Observation(entity_id=entity, metric="latitude", value=round(lat_sum / count, 4), unit="deg")
+        yield derive.Observation(entity_id=entity, metric="longitude", value=round(lon_sum / count, 4), unit="deg")
+
+
+derive.register("pdb-facilities.v1", parse_facilities, PARSER_VERSION)

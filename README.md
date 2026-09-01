@@ -20,6 +20,24 @@ unless someone was writing it down. This repo writes it down.
 > São Paulo leads all metros at 20.2 Tbps combined. Singapore, Amsterdam,
 > Frankfurt and Mumbai are the only metros where **all nine** are present.
 
+
+### Public peering only — this systematically undercounts enterprise clouds
+
+PeeringDB records **public** interconnection: ports on internet exchanges.
+Enterprise cloud traffic disproportionately travels over **private**
+interconnects — AWS Direct Connect, Azure ExpressRoute, Google Cloud
+Interconnect, and private network interconnects inside datacenters. None of
+that appears here, and nobody publishes it.
+
+So the ranking is not "who moves the most bytes". Content and edge networks
+(Meta, Akamai, Cloudflare, Fastly) push video and images to consumer eyeballs,
+which is exactly the traffic that belongs on public exchanges — so they rank
+high, correctly. Enterprise clouds serve business traffic that often bypasses
+exchanges entirely, so their true footprint is larger than these numbers show.
+
+Read the figures as **"declared public interconnection capacity"**, which is a
+real and comparable quantity, and never as total bandwidth or as traffic.
+
 ## Research questions
 
 The point of this repo is the questions, not the folders. Every source below
@@ -106,9 +124,16 @@ that place. Watched over months, that yields things AWS does not publish:
 The first capture already shows the spread: `us-east-1` carries all 195
 services while the newest regions carry ~105.
 
-![AWS region maturity](examples/charts/region-maturity.svg)
-
 ![The rollout frontier](examples/charts/rollout-frontier.svg)
+
+![Shared, or owned?](examples/charts/metro-concentration.svg)
+
+**Saturation at the core, dominance at the edge.** Across 85 metros above
+1 Tbps the median leader holds 29%, but the spread is the finding: Amsterdam,
+Frankfurt and Sydney sit near 18-20% with all nine networks present, while
+Fortaleza (65%) and Jakarta (46%) are effectively one network's territory —
+Meta's in both cases. If your disaster-recovery metro is on the right-hand
+side, it is not really multi-vendor.
 
 ![Two ways to build a network](examples/charts/network-strategy.svg)
 
