@@ -25,6 +25,16 @@ that place. Watched over months, that yields things AWS does not publish:
 The first capture already shows the spread: `us-east-1` carries all 195
 services while the newest regions carry ~105.
 
+![AWS region maturity](examples/charts/region-maturity.svg)
+
+![The rollout frontier](examples/charts/rollout-frontier.svg)
+
+Both from [examples/visualize.py](examples/visualize.py), rendered from the
+derived table. Even one snapshot is informative: **100 of 195 services are in
+all 37 regions**, so the other 95 are mid-rollout — and the 20 thinnest are
+where AWS is actively expanding (or where something has quietly stalled).
+With weeks of captures these become rollout curves.
+
 ## The data
 
 `derived/observations/<YYYY-MM>.csv`, long format:
