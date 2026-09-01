@@ -9,6 +9,8 @@ Two charts, written to examples/charts/:
                         give up by deploying somewhere other than us-east-1
   rollout-frontier.svg  the services in the fewest regions — where AWS is
                         currently expanding, and what has stalled
+  region-gap.svg        what a newly opened region still lacks, and how much
+                        of the catalogue ships as the "opening kit"
 
 Both read the derived table, never the raw archive. Stdlib only,
 deterministic output: the same observations always produce the same bytes.
@@ -72,6 +74,16 @@ def bar(x, y, w, h, colour=HUE, r=4) -> str:
     )
 
 
+def legend(items, y: float, x0: float = 24.0) -> list[str]:
+    """A legend is always present when more than one colour carries meaning."""
+    out, x = [], x0
+    for label, colour in items:
+        out.append(f'<rect x="{x:.1f}" y="{y - 9:.1f}" width="10" height="10" rx="2" fill="{colour}"/>')
+        out.append(svg_text(x + 16, y, label, size=11, fill=INK2))
+        x += 16 + len(label) * 6.6 + 18
+    return out
+
+
 def wrap(width, height, title, desc, body) -> str:
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
@@ -127,6 +139,58 @@ def ranked_bars(
     return f"{out.relative_to(REPO)} — {len(data)} bars"
 
 
+def membership(root: Path = REPO):
+    """region -> set of services, straight from the derived table."""
+    from collections import defaultdict
+    member = defaultdict(set)
+    for partition in sorted((root / "derived" / "observations").glob("*.csv")):
+        with partition.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                if r["metric"] == "available":
+                    region, service = r["entity_id"][7:].split("/service:", 1)
+                    member[region].add(service)
+    return member
+
+
+def region_gap(out: Path, thinnest: int = 4) -> str:
+    """What the newest regions still lack, and what always ships first."""
+    member = membership()
+    if not member:
+        return "region-gap.svg skipped: no membership observations yet"
+    order = sorted(member, key=lambda r: len(member[r]))
+    thin, fat = order[:thinnest], order[-1]
+    kit = set.intersection(*[member[r] for r in thin])
+    universe = member[fat]
+
+    data = [(r, len(kit), len(member[r]) - len(kit), len(universe) - len(member[r])) for r in reversed(order)]
+    width, left, right, top_pad = 900.0, 168.0, 150.0, 116.0
+    bar_h, gap = 13.0, 5.0
+    height = top_pad + len(data) * (bar_h + gap) + 40
+    span = width - left - right
+    total = len(universe)
+
+    body = [
+        svg_text(24, 30, "What a new region still lacks", size=16, fill=INK, weight="600"),
+        svg_text(24, 50, f"every AWS region against the {total}-service catalogue of {fat}", size=12, fill=INK2),
+        svg_text(24, 70, f"the opening kit — {len(kit)} services present in all {thinnest} newest regions — is what AWS treats as the minimum viable region", size=11, fill=MUTED),
+    ]
+    body += legend([("opening kit", HUE), ("added since", HUE_SOFT), ("still missing", "#e8e7e1")], 96)
+    for i, (region, k, extra, missing) in enumerate(data):
+        y = top_pad + i * (bar_h + gap)
+        x = left
+        for value, colour in ((k, HUE), (extra, HUE_SOFT), (missing, "#e8e7e1")):
+            w = value / total * span
+            if w > 0.5:
+                body.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{max(0.5, w - 2):.1f}" height="{bar_h}" fill="{colour}"/>')
+            x += w
+        body.append(svg_text(left - 10, y + bar_h - 3, region, size=10, fill=INK2 if region not in thin else INK, anchor="end", weight="600" if region in thin else "normal"))
+        body.append(svg_text(width - right + 8, y + bar_h - 3, f"{k + extra} of {total}" + ("   ← newest" if region in thin else ""), size=10, fill=MUTED, tabular=True))
+    body.append(svg_text(24, height - 8, "source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0", size=10, fill=MUTED))
+    out.write_text(wrap(width, height, "What a new region still lacks",
+                        "Stacked bar per AWS region showing the opening-kit services, services added since, and services still missing.", "\n".join(body)), encoding="utf-8")
+    return f"{out.relative_to(REPO)} — {len(data)} regions, opening kit {len(kit)} services"
+
+
 def main() -> int:
     argparse.ArgumentParser(description=__doc__).parse_args()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -157,6 +221,7 @@ def main() -> int:
         [(s, v) for s, v in services if v < len(regions)], key=lambda kv: (kv[1], kv[0])
     )[:20]
     universal = sum(1 for _, v in services if v == len(regions))
+    print(region_gap(OUT_DIR / "region-gap.svg"))
     print(
         ranked_bars(
             frontier,

@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900.0" height="822.0" viewBox="0 0 900.0 822.0" role="img" aria-label="What a new region still lacks">
+<title>What a new region still lacks</title>
+<desc>Stacked bar per AWS region showing the opening-kit services, services added since, and services still missing.</desc>
+<rect width="900.0" height="822.0" fill="#fcfcfb"/>
+<text x="24.0" y="30.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">What a new region still lacks</text>
+<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">every AWS region against the 195-service catalogue of us-east-1</text>
+<text x="24.0" y="70.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#898781" text-anchor="start" font-weight="normal" style="">the opening kit — 102 services present in all 4 newest regions — is what AWS treats as the minimum viable region</text>
+<rect x="24.0" y="87.0" width="10" height="10" rx="2" fill="#2a78d6"/>
+<text x="40.0" y="96.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="start" font-weight="normal" style="">opening kit</text>
+<rect x="130.6" y="87.0" width="10" height="10" rx="2" fill="#9ec5f4"/>
+<text x="146.6" y="96.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="start" font-weight="normal" style="">added since</text>
+<rect x="237.2" y="87.0" width="10" height="10" rx="2" fill="#e8e7e1"/>
+<text x="253.2" y="96.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="start" font-weight="normal" style="">still missing</text>
+<rect x="168.0" y="116.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="116.0" width="275.6" height="13.0" fill="#9ec5f4"/>
+<text x="158.0" y="126.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-east-1</text>
+<text x="758.0" y="126.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">195 of 195</text>
+<rect x="168.0" y="134.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="134.0" width="266.6" height="13.0" fill="#9ec5f4"/>
+<rect x="741.0" y="134.0" width="7.0" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="144.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-west-2</text>
+<text x="758.0" y="144.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">192 of 195</text>
+<rect x="168.0" y="152.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="152.0" width="260.6" height="13.0" fill="#9ec5f4"/>
+<rect x="735.1" y="152.0" width="12.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="162.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-central-1</text>
+<text x="758.0" y="162.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">190 of 195</text>
+<rect x="168.0" y="170.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="170.0" width="260.6" height="13.0" fill="#9ec5f4"/>
+<rect x="735.1" y="170.0" width="12.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="180.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-2</text>
+<text x="758.0" y="180.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">190 of 195</text>
+<rect x="168.0" y="188.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="188.0" width="257.7" height="13.0" fill="#9ec5f4"/>
+<rect x="732.1" y="188.0" width="15.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="198.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-west-1</text>
+<text x="758.0" y="198.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">189 of 195</text>
+<rect x="168.0" y="206.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="206.0" width="257.7" height="13.0" fill="#9ec5f4"/>
+<rect x="732.1" y="206.0" width="15.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="216.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-1</text>
+<text x="758.0" y="216.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">189 of 195</text>
+<rect x="168.0" y="224.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="224.0" width="254.7" height="13.0" fill="#9ec5f4"/>
+<rect x="729.1" y="224.0" width="18.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="234.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-west-2</text>
+<text x="758.0" y="234.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">188 of 195</text>
+<rect x="168.0" y="242.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="242.0" width="254.7" height="13.0" fill="#9ec5f4"/>
+<rect x="729.1" y="242.0" width="18.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="252.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-northeast-1</text>
+<text x="758.0" y="252.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">188 of 195</text>
+<rect x="168.0" y="260.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="260.0" width="245.7" height="13.0" fill="#9ec5f4"/>
+<rect x="720.2" y="260.0" width="27.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="270.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-east-2</text>
+<text x="758.0" y="270.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">185 of 195</text>
+<rect x="168.0" y="278.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="278.0" width="242.7" height="13.0" fill="#9ec5f4"/>
+<rect x="717.2" y="278.0" width="30.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="288.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-south-1</text>
+<text x="758.0" y="288.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">184 of 195</text>
+<rect x="168.0" y="296.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="296.0" width="236.8" height="13.0" fill="#9ec5f4"/>
+<rect x="711.2" y="296.0" width="36.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="306.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ca-central-1</text>
+<text x="758.0" y="306.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">182 of 195</text>
+<rect x="168.0" y="314.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="314.0" width="233.8" height="13.0" fill="#9ec5f4"/>
+<rect x="708.2" y="314.0" width="39.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="324.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-northeast-2</text>
+<text x="758.0" y="324.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">181 of 195</text>
+<rect x="168.0" y="332.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="332.0" width="206.9" height="13.0" fill="#9ec5f4"/>
+<rect x="681.4" y="332.0" width="66.6" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="342.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-west-3</text>
+<text x="758.0" y="342.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">172 of 195</text>
+<rect x="168.0" y="350.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="350.0" width="201.0" height="13.0" fill="#9ec5f4"/>
+<rect x="675.4" y="350.0" width="72.6" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="360.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">sa-east-1</text>
+<text x="758.0" y="360.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">170 of 195</text>
+<rect x="168.0" y="368.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="368.0" width="198.0" height="13.0" fill="#9ec5f4"/>
+<rect x="672.4" y="368.0" width="75.6" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="378.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-north-1</text>
+<text x="758.0" y="378.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">169 of 195</text>
+<rect x="168.0" y="386.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="386.0" width="171.1" height="13.0" fill="#9ec5f4"/>
+<rect x="645.5" y="386.0" width="102.5" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="396.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-west-1</text>
+<text x="758.0" y="396.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">160 of 195</text>
+<rect x="168.0" y="404.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="404.0" width="168.1" height="13.0" fill="#9ec5f4"/>
+<rect x="642.6" y="404.0" width="105.4" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="414.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-gov-west-1</text>
+<text x="758.0" y="414.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">159 of 195</text>
+<rect x="168.0" y="422.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="422.0" width="153.2" height="13.0" fill="#9ec5f4"/>
+<rect x="627.6" y="422.0" width="120.4" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="432.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">af-south-1</text>
+<text x="758.0" y="432.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">154 of 195</text>
+<rect x="168.0" y="440.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="440.0" width="144.2" height="13.0" fill="#9ec5f4"/>
+<rect x="618.7" y="440.0" width="129.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="450.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-south-1</text>
+<text x="758.0" y="450.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">151 of 195</text>
+<rect x="168.0" y="458.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="458.0" width="141.3" height="13.0" fill="#9ec5f4"/>
+<rect x="615.7" y="458.0" width="132.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="468.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-south-2</text>
+<text x="758.0" y="468.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">150 of 195</text>
+<rect x="168.0" y="476.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="476.0" width="141.3" height="13.0" fill="#9ec5f4"/>
+<rect x="615.7" y="476.0" width="132.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="486.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-5</text>
+<text x="758.0" y="486.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">150 of 195</text>
+<rect x="168.0" y="494.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="494.0" width="138.3" height="13.0" fill="#9ec5f4"/>
+<rect x="612.7" y="494.0" width="135.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="504.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-east-1</text>
+<text x="758.0" y="504.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">149 of 195</text>
+<rect x="168.0" y="512.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="512.0" width="132.3" height="13.0" fill="#9ec5f4"/>
+<rect x="606.7" y="512.0" width="141.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="522.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">us-gov-east-1</text>
+<text x="758.0" y="522.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">147 of 195</text>
+<rect x="168.0" y="530.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="530.0" width="132.3" height="13.0" fill="#9ec5f4"/>
+<rect x="606.7" y="530.0" width="141.3" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="540.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-northeast-3</text>
+<text x="758.0" y="540.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">147 of 195</text>
+<rect x="168.0" y="548.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="548.0" width="126.3" height="13.0" fill="#9ec5f4"/>
+<rect x="600.8" y="548.0" width="147.2" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="558.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">me-south-1</text>
+<text x="758.0" y="558.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">145 of 195</text>
+<rect x="168.0" y="566.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="566.0" width="123.4" height="13.0" fill="#9ec5f4"/>
+<rect x="597.8" y="566.0" width="150.2" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="576.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">me-central-1</text>
+<text x="758.0" y="576.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">144 of 195</text>
+<rect x="168.0" y="584.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="584.0" width="114.4" height="13.0" fill="#9ec5f4"/>
+<rect x="588.8" y="584.0" width="159.2" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="594.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">il-central-1</text>
+<text x="758.0" y="594.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">141 of 195</text>
+<rect x="168.0" y="602.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="602.0" width="108.4" height="13.0" fill="#9ec5f4"/>
+<rect x="582.9" y="602.0" width="165.1" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="612.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-south-2</text>
+<text x="758.0" y="612.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">139 of 195</text>
+<rect x="168.0" y="620.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="620.0" width="105.4" height="13.0" fill="#9ec5f4"/>
+<rect x="579.9" y="620.0" width="168.1" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="630.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">eu-central-2</text>
+<text x="758.0" y="630.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">138 of 195</text>
+<rect x="168.0" y="638.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="638.0" width="105.4" height="13.0" fill="#9ec5f4"/>
+<rect x="579.9" y="638.0" width="168.1" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="648.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-4</text>
+<text x="758.0" y="648.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">138 of 195</text>
+<rect x="168.0" y="656.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="656.0" width="105.4" height="13.0" fill="#9ec5f4"/>
+<rect x="579.9" y="656.0" width="168.1" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="666.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-3</text>
+<text x="758.0" y="666.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">138 of 195</text>
+<rect x="168.0" y="674.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="674.0" width="84.6" height="13.0" fill="#9ec5f4"/>
+<rect x="559.0" y="674.0" width="189.0" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="684.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ca-west-1</text>
+<text x="758.0" y="684.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">131 of 195</text>
+<rect x="168.0" y="692.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="692.0" width="84.6" height="13.0" fill="#9ec5f4"/>
+<rect x="559.0" y="692.0" width="189.0" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="702.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="end" font-weight="normal" style="">ap-southeast-7</text>
+<text x="758.0" y="702.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">131 of 195</text>
+<rect x="168.0" y="710.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="710.0" width="54.7" height="13.0" fill="#9ec5f4"/>
+<rect x="529.1" y="710.0" width="218.9" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="720.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="600" style="">mx-central-1</text>
+<text x="758.0" y="720.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">121 of 195   ← newest</text>
+<rect x="168.0" y="728.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="728.0" width="48.7" height="13.0" fill="#9ec5f4"/>
+<rect x="523.2" y="728.0" width="224.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="738.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="600" style="">ap-southeast-6</text>
+<text x="758.0" y="738.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">119 of 195   ← newest</text>
+<rect x="168.0" y="746.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="746.0" width="36.8" height="13.0" fill="#9ec5f4"/>
+<rect x="511.2" y="746.0" width="236.8" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="756.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="600" style="">ap-east-2</text>
+<text x="758.0" y="756.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">115 of 195   ← newest</text>
+<rect x="168.0" y="764.0" width="302.4" height="13.0" fill="#2a78d6"/>
+<rect x="472.4" y="764.0" width="7.0" height="13.0" fill="#9ec5f4"/>
+<rect x="481.4" y="764.0" width="266.6" height="13.0" fill="#e8e7e1"/>
+<text x="158.0" y="774.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#0b0b0b" text-anchor="end" font-weight="600" style="">eusc-de-east-1</text>
+<text x="758.0" y="774.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="font-variant-numeric: tabular-nums;">105 of 195   ← newest</text>
+<text x="24.0" y="814.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">source: wss-cloud-footprint · aws.services.regional · CC-BY-4.0</text>
+</svg>

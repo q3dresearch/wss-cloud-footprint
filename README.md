@@ -24,8 +24,20 @@ needs more weeks) · **answerable** (enough history exists) · **answered**
 | Q1 | When a provider opens a region, how long until it reaches service parity — and which regions never do? | accruing (needs ~12 weeks) | `aws.services.regional` |
 | Q2 | Which services **stall**? A service stuck in few regions for months is being quietly abandoned, which matters if you depend on it. | accruing (needs ~12 weeks) | `aws.services.regional` |
 | Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? Oracle advertises 56 regions to AWS's 37 — but AWS's largest carries 195 services. | open — needs per-region service depth for a second vendor | nothing yet |
-| Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first, and how fast do they spread? | open — needs instance-type catalogues, not IP ranges | nothing yet |
+| Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first, and how fast do they spread? | **blocked** — no public unauthenticated source found; see below | nothing yet |
 | Q5 | Does network address space lead or lag service availability? Does a region get addresses before it gets services? | accruing | `aws.infra.ip-ranges` + `aws.services.regional` |
+| Q6 | What is the **opening kit** — the services AWS treats as the minimum viable region — and is it growing? | answerable now (102 services) | `aws.services.regional` (`available`) |
+| Q7 | For a given region, exactly which services are missing? The deployability question. | answerable now | `aws.services.regional` (`available`) |
+
+### Q4 is blocked, and that is worth recording
+
+Instance types per region are not publicly available without credentials.
+AWS's EC2 pricing `region_index.json` is small (18 KB, 106 regions) but only
+points at per-region offer files that run to hundreds of megabytes each — not
+capturable weekly. The EC2 `DescribeInstanceTypeOfferings` API answers it
+exactly, but needs AWS credentials. That is now possible (the engine supports
+`auth: {bearer_env: …}`), so Q4 is a decision about whether to run this with
+an AWS read-only key, not a dead end.
 
 ### A note on what this repo deliberately does *not* chase
 
@@ -62,6 +74,14 @@ services while the newest regions carry ~105.
 ![AWS region maturity](examples/charts/region-maturity.svg)
 
 ![The rollout frontier](examples/charts/rollout-frontier.svg)
+
+![What a new region still lacks](examples/charts/region-gap.svg)
+
+Every region ships with the same **102-service opening kit** — what AWS
+treats as the minimum viable region — and then accumulates the remaining 93
+over years. `eusc-de-east-1`, the European Sovereign Cloud, is 90 services
+short of `us-east-1`. If you are choosing where to deploy, that gap is the
+answer, and it is only visible because the membership matrix is captured.
 
 Both from [examples/visualize.py](examples/visualize.py), rendered from the
 derived table. Even one snapshot is informative: **100 of 195 services are in
