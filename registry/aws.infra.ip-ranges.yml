@@ -1,0 +1,29 @@
+# AWS's published IP ranges. Only the current file is served; growth in
+# prefixes per region is a proxy for infrastructure build-out.
+source_id: aws.infra.ip-ranges
+status: active
+cadence: weekly
+schema_id: aws-ipranges.v1
+
+publisher: Amazon Web Services
+publisher_tier: first_party
+destroys_own_history: true
+licence: "public AWS endpoint; see https://aws.amazon.com/service-terms/"
+personal_data: none
+storage: git
+
+notes: >-
+  Prefix counts per region and per service track where AWS is adding network
+  capacity. AWS serves only the current file, with a syncToken but no archive.
+
+endpoints:
+  - url: "https://ip-ranges.amazonaws.com/ip-ranges.json"
+    delay_seconds: 2
+
+gates:
+  expect_status: 200
+  min_bytes: 1000000
+  content_type_any: [json]
+  must_contain: ["ip_prefix"]
+  must_not_contain: ["Access Denied"]
+  max_shrink_pct: 25

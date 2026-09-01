@@ -1,0 +1,32 @@
+# Which AWS services are live in which regions. AWS publishes only the
+# current table — there is no historical version, so the date a service
+# reached a region is not recoverable after the fact.
+source_id: aws.services.regional
+status: active
+cadence: weekly
+schema_id: aws-regional.v1
+
+publisher: Amazon Web Services
+publisher_tier: first_party
+destroys_own_history: true
+licence: "public AWS endpoint; see https://aws.amazon.com/service-terms/"
+personal_data: none
+storage: git
+
+notes: >-
+  Revealed capex and product intent: a new (service, region) pair appearing
+  means AWS stood that service up there. Region maturity and rollout breadth
+  are both derivable, and first-appearance dates become recoverable only if
+  someone captures them.
+
+endpoints:
+  - url: "https://api.regional-table.region-services.aws.a2z.com/index.json"
+    delay_seconds: 2
+
+gates:
+  expect_status: 200
+  min_bytes: 500000
+  content_type_any: [json]
+  must_contain: ["aws:serviceName"]
+  must_not_contain: ["Access Denied"]
+  max_shrink_pct: 25
