@@ -1,0 +1,34 @@
+# Declared interconnection capacity per network per exchange — the closest
+# public proxy for "bandwidth by location". PeeringDB keeps only current
+# state, so growth is invisible unless captured.
+source_id: peeringdb.networks.capacity
+status: active
+cadence: weekly
+schema_id: pdb-capacity.v1
+
+publisher: PeeringDB
+publisher_tier: primary
+destroys_own_history: true
+licence: "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially"
+personal_data: none
+storage: git
+
+notes: >-
+  IMPORTANT — this is DECLARED PORT CAPACITY, not measured traffic. It is what
+  an operator has provisioned at an exchange, not what flows across it. Nobody
+  publishes real per-location traffic, but provisioned capacity is a
+  commitment signal: you do not buy 100G ports you never intend to fill.
+  ASNs tracked: AWS 16509, Google 15169, Microsoft 8075, Cloudflare 13335,
+  Fastly 54113, Meta 32934, Oracle 31898, DigitalOcean 14061, Akamai 20940.
+
+endpoints:
+  - url: "https://www.peeringdb.com/api/netixlan?asn__in=16509,15169,8075,13335,54113,32934,31898,14061,20940&limit=5000&fields=asn,ix_id,name,speed,operational,is_rs_peer"
+    delay_seconds: 3
+
+gates:
+  expect_status: 200
+  min_bytes: 50000
+  content_type_any: [json]
+  must_contain: ["speed"]
+  must_not_contain: ["Access Denied"]
+  max_shrink_pct: 30

@@ -8,6 +8,18 @@ AWS publishes only the *current* table. There is no historical version, so
 **the date a service reached a region is unrecoverable after the fact** —
 unless someone was writing it down. This repo writes it down.
 
+> **Not just AWS.** Interconnection capacity now covers nine networks —
+> AWS, Google, Microsoft, Cloudflare, Fastly, Meta, Oracle, DigitalOcean and
+> Akamai — anchored to the metro of each internet exchange.
+>
+> The first capture already upends the hyperscaler framing: **Akamai declares
+> 81.4 Tbps and Meta 77.1, both ahead of AWS at 52.4**, and Cloudflare reaches
+> more exchanges (355) than anyone. Judged by IP ranges the CDNs looked
+> trivial; judged by where they actually plug in, they are the largest.
+>
+> São Paulo leads all metros at 20.2 Tbps combined. Singapore, Amsterdam,
+> Frankfurt and Mumbai are the only metros where **all nine** are present.
+
 ## Research questions
 
 The point of this repo is the questions, not the folders. Every source below
@@ -23,7 +35,9 @@ needs more weeks) · **answerable** (enough history exists) · **answered**
 | --- | --- | --- | --- |
 | Q1 | When a provider opens a region, how long until it reaches service parity — and which regions never do? | accruing (needs ~12 weeks) | `aws.services.regional` |
 | Q2 | Which services **stall**? A service stuck in few regions for months is being quietly abandoned, which matters if you depend on it. | accruing (needs ~12 weeks) | `aws.services.regional` |
-| Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? Oracle advertises 56 regions to AWS's 37 — but AWS's largest carries 195 services. | open — needs per-region service depth for a second vendor | nothing yet |
+| Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? Oracle advertises 56 regions to AWS's 37 — but AWS's largest carries 195 services. | **partly answerable** — declared capacity now covers 9 vendors | `peeringdb.networks.capacity` |
+| Q8 | Where is interconnection capacity concentrated, and which metros does a vendor skip? A DR region with one vendor present is not multi-cloud. | answerable now | `peeringdb.*` |
+| Q9 | Is capacity growth leading or trailing region launches — do the ports arrive before the services? | accruing | `peeringdb.networks.capacity` + `aws.services.regional` |
 | Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first, and how fast do they spread? | **blocked** — no public unauthenticated source found; see below | nothing yet |
 | Q5 | Does network address space lead or lag service availability? Does a region get addresses before it gets services? | accruing | `aws.infra.ip-ranges` + `aws.services.regional` |
 | Q6 | What is the **opening kit** — the services AWS treats as the minimum viable region — and is it growing? | answerable now (102 services) | `aws.services.regional` (`available`) |

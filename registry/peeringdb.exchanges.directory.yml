@@ -1,0 +1,32 @@
+# Internet exchanges with their metro and continent. PeeringDB is a live
+# register: it shows the world as it is now, with no public historical
+# snapshots, so the date an exchange appeared or grew is unrecoverable.
+source_id: peeringdb.exchanges.directory
+status: active
+cadence: weekly
+schema_id: pdb-exchanges.v1
+
+publisher: PeeringDB
+publisher_tier: primary
+destroys_own_history: true
+licence: "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially"
+personal_data: none
+storage: git
+
+notes: >-
+  The location layer. Exchange records carry city, country and continent,
+  which turns the capacity source below into a map. Requested with an
+  explicit `fields=` list because the full record contains operator contact
+  emails — this repo captures none of them.
+
+endpoints:
+  - url: "https://www.peeringdb.com/api/ix?fields=id,name,city,country,region_continent,net_count,fac_count"
+    delay_seconds: 3
+
+gates:
+  expect_status: 200
+  min_bytes: 50000
+  content_type_any: [json]
+  must_contain: ["region_continent"]
+  must_not_contain: ["Access Denied", "@"]
+  max_shrink_pct: 30
