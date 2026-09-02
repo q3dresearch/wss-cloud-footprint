@@ -1,232 +1,162 @@
-# wss-cloud-footprint — Cloud Footprint History
+# wss-cloud-footprint
 
-Weekly point-in-time capture of **where AWS has actually built things**:
-which services are live in which regions, and how many IP prefixes each
-region and service carries.
+**Where the internet's infrastructure is actually being built** — captured
+weekly, because nobody publishes the history.
 
-AWS publishes only the *current* table. There is no historical version, so
-**the date a service reached a region is unrecoverable after the fact** —
-unless someone was writing it down. This repo writes it down.
+AWS tells you which services are live in which regions *today*. PeeringDB
+tells you where nine major networks have plugged in *today*. Neither keeps
+yesterday's answer, and neither offers a window to page back through. So the
+date a service reached a region, or the week a network doubled its capacity
+in São Paulo, is unrecoverable — unless somebody was writing it down.
 
-> **Not just AWS.** Interconnection capacity now covers nine networks —
-> AWS, Google, Microsoft, Cloudflare, Fastly, Meta, Oracle, DigitalOcean and
-> Akamai — anchored to the metro of each internet exchange.
->
-> The first capture already upends the hyperscaler framing: **Akamai declares
-> 81.4 Tbps and Meta 77.1, both ahead of AWS at 52.4**, and Cloudflare reaches
-> more exchanges (355) than anyone. Judged by IP ranges the CDNs looked
-> trivial; judged by where they actually plug in, they are the largest.
->
-> São Paulo leads all metros at 20.2 Tbps combined. Singapore, Amsterdam,
-> Frankfurt and Mumbai are the only metros where **all nine** are present.
+This repo writes it down.
 
+> **One thing to read before using the capacity numbers.** PeeringDB records
+> **public** peering only. Enterprise cloud traffic disproportionately runs
+> over private interconnects — Direct Connect, ExpressRoute, Cloud
+> Interconnect — which appear nowhere here and which nobody publishes. So
+> content and edge networks (Meta, Akamai, Cloudflare) rank high *correctly*,
+> because pushing video to consumers is exactly what public exchanges are
+> for, while AWS's and Azure's true footprint is larger than shown. Read
+> every figure as **declared public interconnection capacity** — a real,
+> comparable quantity — never as traffic or total bandwidth.
 
-### Public peering only — this systematically undercounts enterprise clouds
+## The questions
 
-PeeringDB records **public** interconnection: ports on internet exchanges.
-Enterprise cloud traffic disproportionately travels over **private**
-interconnects — AWS Direct Connect, Azure ExpressRoute, Google Cloud
-Interconnect, and private network interconnects inside datacenters. None of
-that appears here, and nobody publishes it.
+The point of this repo is the questions, not the folders. Every source exists
+to answer one; a source that answers none should be dropped, and a question
+nothing answers is the next thing to build. **Append freely** — an open
+question with no data is a useful entry, not a gap to hide.
 
-So the ranking is not "who moves the most bytes". Content and edge networks
-(Meta, Akamai, Cloudflare, Fastly) push video and images to consumer eyeballs,
-which is exactly the traffic that belongs on public exchanges — so they rank
-high, correctly. Enterprise clouds serve business traffic that often bypasses
-exchanges entirely, so their true footprint is larger than these numbers show.
+Status: **open** (nothing captured) · **accruing** (captured, needs weeks) ·
+**answerable** (enough data) · **blocked** (needs something we lack).
 
-Read the figures as **"declared public interconnection capacity"**, which is a
-real and comparable quantity, and never as total bandwidth or as traffic.
+| # | Question | Status |
+| --- | --- | --- |
+| Q1 | When a provider opens a region, how long until it reaches service parity — and which regions never do? | accruing (~12 weeks) |
+| Q2 | Which services **stall**? A service stuck in few regions for months is being quietly abandoned, which matters if you depend on it. | accruing (~12 weeks) |
+| Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? | partly answerable |
+| Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first? | blocked — see below |
+| Q5 | Does address space lead or lag service availability — do the addresses arrive before the services? | accruing |
+| Q6 | What is the **opening kit**, the services treated as a minimum viable region, and is it growing? | answerable (102 services) |
+| Q7 | For a given region, exactly which services are missing? The deployability question. | answerable |
+| Q8 | Where is interconnection concentrated, and which metros does a vendor skip? A DR metro with one network present is not multi-vendor. | answerable |
+| Q9 | Is capacity growth leading or trailing region launches — do the ports arrive before the services? | accruing |
 
-## Research questions
+**Q4 is blocked on credentials, not effort.** Instance types per region are
+not public: AWS's EC2 pricing index is small but only points at per-region
+offer files of hundreds of megabytes, and `DescribeInstanceTypeOfferings`
+answers it exactly but needs AWS keys. The engine supports authenticated
+sources, so this is a decision about running with a read-only AWS key — not a
+dead end.
 
-The point of this repo is the questions, not the folders. Every source below
-exists to answer one; a source that answers none should be dropped, and a
-question nothing answers is the next thing to build. **Append freely** — an
-open question with no data is a useful entry, not a gap to hide.
+## What you can build from it
 
-Status is one of: **open** (nothing captured yet) · **accruing** (captured,
-needs more weeks) · **answerable** (enough history exists) · **answered**
-(with the finding linked).
-
-| # | Question | Status | Answered by |
-| --- | --- | --- | --- |
-| Q1 | When a provider opens a region, how long until it reaches service parity — and which regions never do? | accruing (needs ~12 weeks) | `aws.services.regional` |
-| Q2 | Which services **stall**? A service stuck in few regions for months is being quietly abandoned, which matters if you depend on it. | accruing (needs ~12 weeks) | `aws.services.regional` |
-| Q3 | Is an advertised region count backed by real infrastructure, or is it a press release? Oracle advertises 56 regions to AWS's 37 — but AWS's largest carries 195 services. | **partly answerable** — declared capacity now covers 9 vendors | `peeringdb.networks.capacity` |
-| Q8 | Where is interconnection capacity concentrated, and which metros does a vendor skip? A DR region with one vendor present is not multi-cloud. | answerable now | `peeringdb.*` |
-| Q9 | Is capacity growth leading or trailing region launches — do the ports arrive before the services? | accruing | `peeringdb.networks.capacity` + `aws.services.regional` |
-| Q4 | **Where is accelerator capacity going?** Which regions get GPU/TPU instance types first, and how fast do they spread? | **blocked** — no public unauthenticated source found; see below | nothing yet |
-| Q5 | Does network address space lead or lag service availability? Does a region get addresses before it gets services? | accruing | `aws.infra.ip-ranges` + `aws.services.regional` |
-| Q6 | What is the **opening kit** — the services AWS treats as the minimum viable region — and is it growing? | answerable now (102 services) | `aws.services.regional` (`available`) |
-| Q7 | For a given region, exactly which services are missing? The deployability question. | answerable now | `aws.services.regional` (`available`) |
-
-### When to extend the registry
-
-One test: **which open question does this source close?** If the answer is
-"none", the source does not go in — add the question first and justify it, or
-drop the idea. That rule is what stopped this repo from collecting four more
-vendors' IP-range files, which were easy to fetch and would have answered
-nothing.
-
-By that test the remaining work is narrow:
-
-- **Q3** needs per-region service depth for a second vendor. Azure publishes a
-  products-by-region page (HTML, ~168 KB); GCP's regions page redirects. Both
-  need `wss explore` to find a JSON endpoint behind them.
-- **Q4** needs instance-type catalogues, and is blocked on credentials — see
-  below.
-- **Q8/Q9** are already served by the PeeringDB sources; they need weeks, not
-  new endpoints.
-
-Everything else — more IP ranges, facility records at 5.7 MB a week, status
-pages that vendors already archive — fails the test today.
-
-### Q4 is blocked, and that is worth recording
-
-Instance types per region are not publicly available without credentials.
-AWS's EC2 pricing `region_index.json` is small (18 KB, 106 regions) but only
-points at per-region offer files that run to hundreds of megabytes each — not
-capturable weekly. The EC2 `DescribeInstanceTypeOfferings` API answers it
-exactly, but needs AWS credentials. That is now possible (the engine supports
-`auth: {bearer_env: …}`), so Q4 is a decision about whether to run this with
-an AWS read-only key, not a dead end.
-
-### A note on what this repo deliberately does *not* chase
-
-IP prefix counts are **allocation, not utilisation** — a provider can announce
-a large block and use a fraction of it. They are captured only because Q5 is a
-genuine question about sequencing, and because AWS never republishes them.
-They are not a proxy for capacity, and this repo will not present them as one.
-
-Several vendors publish IP ranges in near-identical shape (GCP, Oracle,
-Linode, DigitalOcean), which makes multi-vendor capture *easy*. Easy is not a
-reason. Cloudflare and Fastly publish ~400 bytes of aggregate CIDR with no
-location at all, so capturing them would answer nothing; Heroku runs on AWS,
-so its footprint is already counted here. The multi-vendor work that would
-actually pay is **Q3 and Q4** — service depth and instance types per vendor —
-not more address space.
-
-## Why this is a signal, not trivia
-
-A new `(service, region)` pair appearing means AWS stood that service up in
-that place. Watched over months, that yields things AWS does not publish:
-
-- **Rollout curves per service** — how long a service takes to go from launch
-  region to broad availability, and which services never make it.
-- **Region maturity** — a new region's service count climbing toward parity,
-  which is a capex-commitment tell.
-- **Regional strategy** — which services land first in a sovereign or
-  emerging region, revealing what that region is being built *for*.
-- **Network build-out** — IP prefix growth per region, independent of the
-  service table.
-
-The first capture already shows the spread: `us-east-1` carries all 195
-services while the newest regions carry ~105.
-
-![The rollout frontier](examples/charts/rollout-frontier.svg)
+Everything below is rendered by [examples/visualize.py](examples/visualize.py)
+from the derived CSVs — stdlib only, deterministic, no network, no map
+package.
 
 ![Shared, or owned?](examples/charts/metro-concentration.svg)
 
-**Saturation at the core, dominance at the edge.** Across 85 metros above
-1 Tbps the median leader holds 29%, but the spread is the finding: Amsterdam,
-Frankfurt and Sydney sit near 18-20% with all nine networks present, while
-Fortaleza (65%) and Jakarta (46%) are effectively one network's territory —
-Meta's in both cases. If your disaster-recovery metro is on the right-hand
-side, it is not really multi-vendor.
+**Q8 — saturation at the core, dominance at the edge.** Across 85 metros above
+1 Tbps the median leader holds 29%, but the spread is the finding. Amsterdam,
+Frankfurt and Sydney sit near 18–20% with all nine networks present;
+Fortaleza (65%) and Jakarta (46%) are effectively one network's territory.
 
 ![Two ways to build a network](examples/charts/network-strategy.svg)
 
-Same total capacity can be spread thin or stacked deep, and that is a
-strategy choice. **Cloudflare reaches 355 exchanges at ~146 Gbps each**;
-Meta reaches 209 at ~369. Akamai does both — most capacity *and* near-Cloudflare
-reach. Oracle and DigitalOcean are an order of magnitude smaller on both axes.
-
-![Declared capacity over time](examples/charts/capacity-history.svg)
-
-That placeholder is deliberate. **Nobody publishes this history** — not AWS,
-not PeeringDB. There is no window to page back through and no archive to
-import, so the series can only start on the day capture started. The chart
-renders itself the moment four weekly captures exist.
+**Q3 — same capacity, opposite strategies.** Cloudflare reaches 355 exchanges
+at ~146 Gbps each; Meta reaches 209 at ~369. Colour is what a network *is*,
+because identity is already on every label.
 
 ![What a new region still lacks](examples/charts/region-gap.svg)
 
-Every region ships with the same **102-service opening kit** — what AWS
-treats as the minimum viable region — and then accumulates the remaining 93
-over years. `eusc-de-east-1`, the European Sovereign Cloud, is 90 services
-short of `us-east-1`. If you are choosing where to deploy, that gap is the
-answer, and it is only visible because the membership matrix is captured.
+**Q6 and Q7 — every region ships with the same 102-service opening kit**, then
+accumulates the remaining 93 over years. `eusc-de-east-1`, the European
+Sovereign Cloud, is 90 services short of `us-east-1`. If you are choosing
+where to deploy, that gap is the answer.
 
-Both from [examples/visualize.py](examples/visualize.py), rendered from the
-derived table. Even one snapshot is informative: **100 of 195 services are in
-all 37 regions**, so the other 95 are mid-rollout — and the 20 thinnest are
-where AWS is actively expanding (or where something has quietly stalled).
-With weeks of captures these become rollout curves.
+![The rollout frontier](examples/charts/rollout-frontier.svg)
 
-## The data
+**Q2 — what is still moving, and what has stalled.** For anything in six
+regions or fewer the regions are named outright, because at that size the
+list is the finding.
 
-`derived/observations/<YYYY-MM>.csv`, long format:
+![Declared capacity over time](examples/charts/capacity-history.svg)
+
+**Q9, deliberately empty.** No history exists to import, so the series can
+only start the day capture started. The chart renders itself once four
+weekly captures exist.
+
+## Using it
+
+The files to query are `derived/observations/<YYYY-MM>.csv`, long format:
 
 ```
 series_id, entity_id, observed_at, captured_at, metric, value, unit, source_id, raw_ref, parser_version
 ```
 
-`entity_id` is namespaced because two kinds of entity share these tables:
+`entity_id` is namespaced so every source joins on it:
 
-| entity_id | metrics |
-| --- | --- |
-| `region:us-east-1` | `services_available`, `ipv4_prefixes` |
-| `service:Amazon S3` | `regions_available`, `ipv4_prefixes` |
-| `aws` | `service_region_pairs`, `regions`, `services`, `ipv4_prefixes_total`, `ipv6_prefixes_total` |
-
-Both sources use the same namespacing on purpose, so they join on
-`entity_id`.
+| entity_id | from | metrics |
+| --- | --- | --- |
+| `region:us-east-1` | AWS | `services_available`, `ipv4_prefixes` |
+| `service:Amazon S3` | AWS | `regions_available` |
+| `region:<r>/service:<s>` | AWS | `available` — the membership matrix |
+| `ix:<id>` | PeeringDB | `city`, `country`, `continent`, `networks_present` |
+| `net:aws` | PeeringDB | `declared_capacity_total`, `ports_total`, `exchanges_present` |
+| `net:aws/ix:<id>` | PeeringDB | `declared_capacity`, `ports` |
+| `metro:<cc>/<city>` | PeeringDB | `latitude`, `longitude`, `facilities` |
 
 ```bash
 head derived/observations/*.csv
-python examples/load_observations.py
+python examples/load_observations.py     # sqlite + example queries
+python examples/visualize.py             # regenerate every chart
 duckdb -c "SELECT * FROM read_csv_auto('derived/observations/*.csv') LIMIT 5"
 ```
 
-## Coverage
+Coverage dates are machine-readable in [health/health.csv](health/health.csv)
+(`first_success_at` → `last_success_at`). Five sources, all weekly: AWS
+services-by-region and IP ranges; PeeringDB exchanges, capacity and facility
+coordinates.
 
-Machine-readable in [health/health.csv](health/health.csv)
-(`first_success_at` → `last_success_at`).
+`capture-weekly` (Mondays 22:25 UTC) → `health` → `derive`, powered by the
+[wss](https://github.com/neldivad/wss-engine) engine pinned to one version.
+No workflow names a source.
 
-| series | what it lists | covered since | status |
-| --- | --- | --- | --- |
-| `aws.services.regional` | every (service, region) pair AWS lists as available | 2026-09-01 | ongoing |
-| `aws.infra.ip-ranges` | AWS's published IPv4/IPv6 prefixes by region and service | 2026-09-01 | ongoing |
+## Contributing, and what is next
 
-A new series gets a row with its start date; a discontinued one keeps its row
-with a *covered until* date. Nothing published is ever removed.
+**The test for a new source: which open question does it close?** If the
+answer is "none", it does not go in — add the question first and justify it,
+or drop the idea. That rule is what stopped this repo collecting four more
+vendors' IP-range files, which were trivial to fetch and would have answered
+nothing.
 
-## Notes on the sources
+By that test the remaining work is narrow:
 
-Both payloads are **set membership** — rows with no numbers in them. The
-measurement is therefore an aggregate (how many services a region carries),
-so the parsers count rather than read. That is a different parser shape from
-a metrics feed, and worth knowing before writing one.
+- **Q3** wants per-region service depth for a second vendor. Azure publishes a
+  products-by-region page (HTML); GCP's regions page redirects. Both need
+  `wss explore` to find a JSON endpoint behind them.
+- **Q4** wants instance-type catalogues, and needs an AWS key.
+- **Q8/Q9** are already served — they need Mondays, not endpoints.
+- A **world map** is a short build once facility coordinates land: latitude
+  and longitude *are* the projection, so 2,066 datacenter cities trace the
+  populated world with no basemap dependency.
 
-`ip-ranges.json` carries a `syncToken` — AWS's own publication timestamp —
-so those observations use it as `observed_at` rather than capture time. The
-gap between the two is real: the first capture recorded a file AWS published
-about four hours earlier.
+Adding a source is one file in `registry/` and, if the payload shape is new,
+one parser. Nothing else changes — no workflow edits.
 
-Cadence is **weekly**, not daily: regions and services move slowly, and the
-cadence should match the decision cycle rather than the polling temptation.
-
-## How it runs
-
-`capture-weekly` (Mondays 22:25 UTC) → `health` → `derive`, all powered by
-the [wss](https://github.com/neldivad/wss-engine) engine pinned to one
-version. No workflow names a source; capture shards whatever `registry/`
-marks active. Adding a source is one new file in `registry/`.
+A note on manners: **PeeringDB is a volunteer-run non-profit**, not a vendor
+API. Requests are spaced 15 seconds apart on a weekly cadence, and both
+endpoints request an explicit `fields=` list so operator contact details are
+never fetched at all. If you fork this, keep that.
 
 ## Licences
 
 Code MIT ([LICENSE](LICENSE)); data CC-BY-4.0 ([LICENSE-DATA](LICENSE-DATA)).
-Captured content comes from public AWS endpoints and remains subject to the
-[AWS service terms](https://aws.amazon.com/service-terms/).
+Captured content comes from public AWS endpoints (subject to the
+[AWS service terms](https://aws.amazon.com/service-terms/)) and from
+[PeeringDB](https://www.peeringdb.com/) — whose terms should be verified
+before redistributing derived data commercially.
 
 Topics: `git-scraping` · `open-data` · `point-in-time-data` · `dataset`
