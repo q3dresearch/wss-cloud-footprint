@@ -96,8 +96,10 @@ short build once facility coordinates land — latitude and longitude *are* the
 projection.
 
 **Manners:** PeeringDB is a volunteer-run non-profit. Requests are 15 seconds
-apart, weekly, and use an explicit `fields=` list so operator contact details
-are never fetched. Keep that if you fork.
+apart, weekly, use an explicit `fields=` list so operator contact details are
+never fetched, and run in a **single shard** — sharding parallelises across
+sources, so more shards would mean more runners hitting one host at the same
+moment. Keep all of that if you fork.
 
 ## Licences
 

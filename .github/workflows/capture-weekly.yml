@@ -19,7 +19,13 @@ concurrency:
 
 env:
   CADENCE: weekly
-  SHARDS: "20" # matrix cap is 256 jobs/run — aim for ~20 jobs of ~50 sources
+  # ONE shard on purpose. Sharding parallelises across sources, but politeness
+  # (per-host delay) is per-process — so N shards means N runners hitting the
+  # same host at once with no spacing between them. Three of these five sources
+  # are PeeringDB, a volunteer-run non-profit. With so few sources parallelism
+  # buys nothing and costs manners. Raise this only when the source count makes
+  # a single job too slow, and check what hosts would then run concurrently.
+  SHARDS: "1"
   ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.5.3"
 
 jobs:
