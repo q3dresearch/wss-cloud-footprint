@@ -66,6 +66,18 @@ the day capture started. Fills in after four weekly captures.
 
 ## Using it
 
+**Reading this data needs nothing** — no key, no account, no clone:
+
+```bash
+B=https://raw.githubusercontent.com/neldivad/wss-cloud-footprint/main/derived/observations
+duckdb -c "SELECT * FROM read_csv_auto('$B/2026-09.csv') LIMIT 5"
+```
+
+One gotcha: a source whose payload carries its own date restates the same
+`observed_at` when the publisher has not republished, so deduplicate on
+`(series_id, entity_id, metric, observed_at)` taking the latest `captured_at`.
+Every query in [examples/queries.sql](examples/queries.sql) shows the pattern.
+
 ```bash
 head derived/observations/*.csv          # the data: one row per entity/metric/day
 python examples/load_observations.py     # sqlite + example queries
