@@ -90,6 +90,10 @@ vendors' IP-range files — easy to fetch, would have answered nothing.
 Adding one is a single file in `registry/`, plus a parser if the payload shape
 is new. No workflow edits, ever.
 
+One source is currently **auto-disabled**: `peeringdb.facilities.geo` needs a
+free PeeringDB API key (its unfiltered endpoint rejects anonymous callers).
+The other four are healthy.
+
 Still open: Q3 wants service depth for a second vendor (Azure and GCP both
 need an API found behind their HTML). Q4 needs an AWS key. A world map is a
 short build once facility coordinates land — latitude and longitude *are* the

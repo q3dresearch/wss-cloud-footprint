@@ -2,7 +2,7 @@
 # an exchange's city name into a point on the earth without a hand-maintained
 # lookup table that would rot.
 source_id: peeringdb.facilities.geo
-status: active
+status: auto_disabled  # was active; auto-disabled 2026-09-02 after 5 consecutive failures
 cadence: weekly
 schema_id: pdb-facilities.v1
 
@@ -16,6 +16,12 @@ storage: git
 # PeeringDB is a volunteer-run non-profit, not a vendor API. 15s between
 # requests, weekly cadence, and one shard: this repo should be invisible in
 # their logs. A 429 here means back off, not retry harder.
+# WHY THIS IS DISABLED: /api/fac unfiltered returns all ~5,860 facilities and
+# 429s for anonymous callers even when /api/ix and /api/netixlan succeed in the
+# same run — so it is a per-query limit, not general throttling. PeeringDB
+# issues free API keys and prefers authenticated access for heavier reads. To
+# re-enable: get a key, add `auth: {bearer_env: PEERINGDB_API_KEY}` below, set
+# the secret, and flip status back to active.
 notes: >-
   5,860 facilities, ~5,256 with coordinates, across ~2,066 cities. Requested
   with an explicit fields= list: the full record carries operator contact
