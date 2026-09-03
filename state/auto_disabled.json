@@ -1,12 +1,4 @@
 {
-  "disabled": [
-    {
-      "consecutive_failures": 5,
-      "last_attempt_at": "2026-09-02T08:05:06Z",
-      "last_success_at": "",
-      "registry_file": "peeringdb.facilities.geo.yml",
-      "source_id": "peeringdb.facilities.geo"
-    }
-  ],
-  "generated_at": "2026-09-02T08:06:48Z"
+  "disabled": [],
+  "generated_at": "2026-09-03T01:25:44Z"
 }
