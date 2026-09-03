@@ -1,7 +1,21 @@
-# wss-cloud-footprint
+<h1 align="center">wss-cloud-footprint</h1>
 
-**Where the internet's infrastructure is actually being built**, captured
-weekly — because nobody publishes the history.
+<p align="center">
+  <strong>Where the internet's infrastructure is actually being built, captured weekly</strong>
+</p>
+
+<div align="center">
+
+  <a href="https://github.com/neldivad/wss-cloud-footprint/actions/workflows/capture-weekly.yml"><img alt="capture status" src="https://img.shields.io/github/actions/workflow/status/neldivad/wss-cloud-footprint/capture-weekly.yml?label=capture&style=flat-square"></a>
+  <a href="https://github.com/neldivad/wss-cloud-footprint/commits"><img alt="last capture" src="https://img.shields.io/github/last-commit/neldivad/wss-cloud-footprint?label=last%20capture&style=flat-square"></a>
+  <a href="https://github.com/neldivad/wss-cloud-footprint/blob/main/LICENSE"><img alt="licence" src="https://img.shields.io/github/license/neldivad/wss-cloud-footprint?style=flat-square"></a>
+  <a href="https://github.com/neldivad/wss-cloud-footprint"><img alt="stars" src="https://img.shields.io/github/stars/neldivad/wss-cloud-footprint?style=social"></a>
+
+</div>
+
+<p align="center">
+  <sub>fleet: <a href="https://github.com/neldivad/wss-engine">engine</a> · <a href="https://github.com/neldivad/wss-hugging-face">hugging face</a> · <a href="https://github.com/neldivad/wss-openrouter">openrouter</a> · <strong>cloud footprint</strong> · <a href="https://github.com/neldivad/wss-mining-pipeline">mining</a></sub>
+</p>
 
 AWS tells you which services are live in which regions *today*. PeeringDB
 tells you where nine major networks have plugged in *today*. Neither keeps
