@@ -1,6 +1,6 @@
 source_id,first_success_at,last_success_at,last_attempt_at,consecutive_failures,expected_interval_h,staleness_h,gate_fail_rate_28d,status
 peeringdb.facilities.geo,,,2026-09-02T08:05:06Z,5,168,,0.200,auto_disabled
-aws.infra.ip-ranges,2026-09-01T09:02:19Z,2026-09-02T08:02:19Z,2026-09-02T08:02:19Z,0,168,17.4,0.000,active
-aws.services.regional,2026-09-01T09:02:23Z,2026-09-02T08:02:22Z,2026-09-02T08:02:22Z,0,168,17.4,0.000,active
-peeringdb.exchanges.directory,2026-09-01T19:06:28Z,2026-09-02T08:03:46Z,2026-09-02T08:03:46Z,0,168,17.4,0.000,active
-peeringdb.networks.capacity,2026-09-01T19:07:33Z,2026-09-02T08:06:08Z,2026-09-02T08:06:08Z,0,168,17.3,0.000,active
+aws.infra.ip-ranges,2026-09-01T09:02:19Z,2026-09-02T08:02:19Z,2026-09-02T08:02:19Z,0,168,41.3,0.000,active
+aws.services.regional,2026-09-01T09:02:23Z,2026-09-02T08:02:22Z,2026-09-02T08:02:22Z,0,168,41.3,0.000,active
+peeringdb.exchanges.directory,2026-09-01T19:06:28Z,2026-09-02T08:03:46Z,2026-09-02T08:03:46Z,0,168,41.3,0.000,active
+peeringdb.networks.capacity,2026-09-01T19:07:33Z,2026-09-02T08:06:08Z,2026-09-02T08:06:08Z,0,168,41.2,0.000,active
