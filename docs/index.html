@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloud Footprint History (wss-cloud-footprint)</title>
+<meta name="description" content="Point-in-time captures from 4 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Cloud Footprint History (wss-cloud-footprint)",
+  "description": "Point-in-time captures from 4 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.",
+  "url": "https://github.com/neldivad/wss-cloud-footprint",
+  "license": "CC-BY-4.0",
+  "isAccessibleForFree": true,
+  "keywords": [
+    "git-scraping",
+    "open-data",
+    "point-in-time-data",
+    "dataset"
+  ],
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "neldivad",
+      "url": "https://github.com/neldivad"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://github.com/neldivad/wss-cloud-footprint/tree/main/data"
+    }
+  ],
+  "temporalCoverage": "2026-09-01/2026-09-02",
+  "isBasedOn": [
+    {
+      "@type": "Dataset",
+      "name": "Amazon Web Services",
+      "url": "https://ip-ranges.amazonaws.com/ip-ranges.json"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Amazon Web Services",
+      "url": "https://api.regional-table.region-services.aws.a2z.com/index.json"
+    },
+    {
+      "@type": "Dataset",
+      "name": "PeeringDB",
+      "url": "https://www.peeringdb.com/api/ix?fields=id,name,city,country,region_continent,net_count,fac_count"
+    },
+    {
+      "@type": "Dataset",
+      "name": "PeeringDB",
+      "url": "https://www.peeringdb.com/api/netixlan?asn__in=16509,15169,8075,13335,54113,32934,31898,14061,20940&limit=5000&fields=asn,ix_id,name,speed,operational,is_rs_peer"
+    }
+  ]
+}
+</script>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+         Helvetica, Arial, sans-serif; max-width: 46rem; margin: 0 auto;
+         padding: 2.5rem 1.25rem; }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { text-align: left; padding: .4rem .6rem;
+            border-bottom: 1px solid rgba(128,128,128,.3); font-size: .92rem; }
+  code { font-size: .9em; }
+  .cov { font-size: .95rem; }
+  footer { margin-top: 2.5rem; font-size: .85rem; opacity: .75; }
+</style>
+</head>
+<body>
+<h1>Cloud Footprint History (wss-cloud-footprint)</h1>
+<p>Point-in-time captures from 4 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.</p>
+<p class="cov">History held: <strong>2026-09-01</strong> to <strong>2026-09-02</strong>.</p>
+
+<h2>What is captured</h2>
+<table>
+  <thead><tr><th>source</th><th>publisher</th><th>cadence</th><th>terms</th></tr></thead>
+  <tbody>
+      <tr><td><code>aws.infra.ip-ranges</code></td><td>Amazon Web Services</td><td>weekly</td><td>public AWS endpoint; see https://aws.amazon.com/service-terms/</td></tr>
+      <tr><td><code>aws.services.regional</code></td><td>Amazon Web Services</td><td>weekly</td><td>public AWS endpoint; see https://aws.amazon.com/service-terms/</td></tr>
+      <tr><td><code>peeringdb.exchanges.directory</code></td><td>PeeringDB</td><td>weekly</td><td>PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially</td></tr>
+      <tr><td><code>peeringdb.networks.capacity</code></td><td>PeeringDB</td><td>weekly</td><td>PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially</td></tr>
+  </tbody>
+</table>
+
+<h2>Using it</h2>
+<p>Derived tables are CSV under <code>data/</code> in
+<a href="https://github.com/neldivad/wss-cloud-footprint">the repository</a>; the bytes they came from are under
+<code>raw/</code>, and <code>SOURCES.md</code> lists every source URL.</p>
+<p>Every observation carries <code>source_id</code> and <code>raw_ref</code>. The
+matching manifest row holds that <code>raw_ref</code> with the URL, the fetch
+timestamp and a SHA-256 of exactly what came back, so any number here traces to
+the bytes it came from.</p>
+<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/neldivad/wss-cloud-footprint">https://github.com/neldivad/wss-cloud-footprint</a>, accessed 2026-09-02.</p>
+
+<footer>
+<p>Repository code and captured data are licensed separately. This dataset is
+offered under CC-BY-4.0; each publisher's own terms govern their material and
+are listed per source above. Generated by <code>wss datapage</code> — do not edit
+by hand.</p>
+</footer>
+</body>
+</html>
