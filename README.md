@@ -14,7 +14,7 @@
 </div>
 
 <p align="center">
-  <sub>fleet: <a href="https://github.com/neldivad/wss-engine">engine</a> · <a href="https://github.com/neldivad/wss-hugging-face">hugging face</a> · <a href="https://github.com/neldivad/wss-openrouter">openrouter</a> · <strong>cloud footprint</strong> · <a href="https://github.com/neldivad/wss-mining-pipeline">mining</a> · <a href="https://github.com/neldivad/wss-forest-harvest">forest</a></sub>
+  <sub>fleet: <a href="https://github.com/neldivad/wss-engine">engine</a> · <a href="https://github.com/neldivad/wss-hugging-face">hugging face</a> · <a href="https://github.com/neldivad/wss-openrouter">openrouter</a> · <strong>cloud footprint</strong> · <a href="https://github.com/neldivad/wss-mining-pipeline">mining</a> · <a href="https://github.com/neldivad/wss-forest-harvest">forest</a> · <a href="https://github.com/neldivad/wss-food-trace">food</a></sub>
 </p>
 
 AWS tells you which services are live in which regions *today*. PeeringDB
