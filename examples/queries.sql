@@ -3,7 +3,7 @@
 --                value, unit, source_id, raw_ref, parser_version)
 -- Run with: python examples/load_observations.py
 -- Or in DuckDB, straight off GitHub with no credentials:
---   SELECT * FROM read_csv_auto('https://raw.githubusercontent.com/neldivad/wss-cloud-footprint/main/derived/observations/*.csv')
+--   SELECT * FROM read_csv_auto('https://raw.githubusercontent.com/q3dresearch/wss-cloud-footprint/main/derived/observations/*.csv')
 
 -- Every query starts by deduplicating. A source whose payload carries its own
 -- date (AWS ip-ranges has a syncToken) restates the same observed_at whenever

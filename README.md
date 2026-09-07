@@ -6,15 +6,15 @@
 
 <div align="center">
 
-  <a href="https://github.com/neldivad/wss-cloud-footprint/actions/workflows/capture-weekly.yml"><img alt="capture status" src="https://img.shields.io/github/actions/workflow/status/neldivad/wss-cloud-footprint/capture-weekly.yml?label=capture&style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-cloud-footprint/commits"><img alt="last capture" src="https://img.shields.io/github/last-commit/neldivad/wss-cloud-footprint?label=last%20capture&style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-cloud-footprint/blob/main/LICENSE"><img alt="licence" src="https://img.shields.io/github/license/neldivad/wss-cloud-footprint?style=flat-square"></a>
-  <a href="https://github.com/neldivad/wss-cloud-footprint"><img alt="stars" src="https://img.shields.io/github/stars/neldivad/wss-cloud-footprint?style=social"></a>
+  <a href="https://github.com/q3dresearch/wss-cloud-footprint/actions/workflows/capture-weekly.yml"><img alt="capture status" src="https://img.shields.io/github/actions/workflow/status/q3dresearch/wss-cloud-footprint/capture-weekly.yml?label=capture&style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-cloud-footprint/commits"><img alt="last capture" src="https://img.shields.io/github/last-commit/q3dresearch/wss-cloud-footprint?label=last%20capture&style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-cloud-footprint/blob/main/LICENSE"><img alt="licence" src="https://img.shields.io/github/license/q3dresearch/wss-cloud-footprint?style=flat-square"></a>
+  <a href="https://github.com/q3dresearch/wss-cloud-footprint"><img alt="stars" src="https://img.shields.io/github/stars/q3dresearch/wss-cloud-footprint?style=social"></a>
 
 </div>
 
 <p align="center">
-  <sub>fleet: <a href="https://github.com/neldivad/wss-engine">engine</a> · <a href="https://github.com/neldivad/wss-hugging-face">hugging face</a> · <a href="https://github.com/neldivad/wss-openrouter">openrouter</a> · <strong>cloud footprint</strong> · <a href="https://github.com/neldivad/wss-mining-pipeline">mining</a> · <a href="https://github.com/neldivad/wss-forest-harvest">forest</a> · <a href="https://github.com/neldivad/wss-food-trace">food</a></sub>
+  <sub>fleet: <a href="https://github.com/q3dresearch/wss-engine">engine</a> · <a href="https://github.com/q3dresearch/wss-hugging-face">hugging face</a> · <a href="https://github.com/q3dresearch/wss-openrouter">openrouter</a> · <strong>cloud footprint</strong> · <a href="https://github.com/q3dresearch/wss-mining-pipeline">mining</a> · <a href="https://github.com/q3dresearch/wss-forest-harvest">forest</a> · <a href="https://github.com/q3dresearch/wss-food-trace">food</a></sub>
 </p>
 
 AWS tells you which services are live in which regions *today*. PeeringDB
@@ -85,7 +85,7 @@ the day capture started. Fills in after four weekly captures.
 **Reading this data needs nothing** — no key, no account, no clone:
 
 ```bash
-B=https://raw.githubusercontent.com/neldivad/wss-cloud-footprint/main/derived/observations
+B=https://raw.githubusercontent.com/q3dresearch/wss-cloud-footprint/main/derived/observations
 duckdb -c "SELECT * FROM read_csv_auto('$B/2026-09.csv') LIMIT 5"
 ```
 
@@ -107,7 +107,7 @@ joins on it. Coverage dates live in [health/health.csv](health/health.csv).
 
 Five weekly sources — AWS services-by-region and IP ranges; PeeringDB
 exchanges, capacity and facility coordinates — captured Mondays 22:25 UTC by
-the [wss](https://github.com/neldivad/wss-engine) engine.
+the [wss](https://github.com/q3dresearch/wss-engine) engine.
 
 ## Contributing
 
