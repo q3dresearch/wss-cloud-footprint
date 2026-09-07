@@ -33,9 +33,14 @@ notes: >-
   basemap package — plotted at (longitude, latitude) the facilities trace the
   populated world themselves.
 
-auth:
-  bearer_env: PEERINGDB_API_KEY
-  scheme: Api-Key
+# No credential. Verified 2026-09-08: the same URL returns HTTP 200 and 5,860
+# rows unauthenticated. The key was carried to raise the rate limit and did not
+# -- every failure this source has recorded is retries_exhausted_status_429,
+# with the key set. The two sibling peeringdb sources have never had a key and
+# fail at the same rate, so the limit is per-host, not per-credential.
+#
+# A credential that buys nothing is pure liability: one more secret to rotate,
+# one more way for CI to break, and no capability in return.
 
 endpoints:
   - url: "https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count"
