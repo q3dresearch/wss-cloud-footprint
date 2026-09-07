@@ -31,7 +31,7 @@ env:
   # buys nothing and costs manners. Raise this only when the source count makes
   # a single job too slow, and check what hosts would then run concurrently.
   SHARDS: "1"
-  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.1"
+  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.2"
 
 jobs:
   plan:
@@ -59,7 +59,6 @@ jobs:
       fail-fast: false # one bad source must not stop the rest of the fleet
       matrix:
         shard: ${{ fromJSON(needs.plan.outputs.shards) }}
-    env:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
