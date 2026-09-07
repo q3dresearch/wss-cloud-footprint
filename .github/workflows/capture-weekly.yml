@@ -31,13 +31,14 @@ env:
   # buys nothing and costs manners. Raise this only when the source count makes
   # a single job too slow, and check what hosts would then run concurrently.
   SHARDS: "1"
-  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.4"
+  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.6"
 
 jobs:
   plan:
     runs-on: ubuntu-latest
     outputs:
       shards: ${{ steps.plan.outputs.shards }}
+      count: ${{ steps.plan.outputs.count }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -49,7 +50,14 @@ jobs:
         run: wss validate
       - name: Plan shards
         id: plan
-        run: echo "shards=$(wss plan --cadence "$CADENCE" --shards "$SHARDS")" >> "$GITHUB_OUTPUT"
+        # Assign, never `echo "shards=$(wss plan ...)"`. Command substitution
+        # inside echo yields *echo's* exit status, so a failing plan reports
+        # success -- which is precisely how an empty matrix stayed green.
+        run: |
+          shards=$(wss plan --cadence "$CADENCE" --shards "$SHARDS")
+          count=$(wss plan --cadence "$CADENCE" --shards "$SHARDS" --count)
+          echo "shards=$shards" >> "$GITHUB_OUTPUT"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
 
   capture:
     needs: plan
@@ -109,11 +117,12 @@ jobs:
           done
       - name: Drop quarantine (triage lives in CI artifacts, never in git)
         run: rm -rf quarantine
-      - name: Heartbeat — proves the cron is alive even when nothing changed
+      - name: Heartbeat — what this run actually planned
         run: |
           mkdir -p state
-          printf '{"cadence":"%s","completed_at":"%s","run_id":"%s","workflow":"%s"}\n' \
-            "$CADENCE" "$(date -u +%FT%TZ)" "${{ github.run_id }}" "${{ github.workflow }}" \
+          printf '{"cadence":"%s","sources_planned":%s,"completed_at":"%s","run_id":"%s","workflow":"%s"}\n' \
+            "$CADENCE" "${{ needs.plan.outputs.count }}" "$(date -u +%FT%TZ)" \
+            "${{ github.run_id }}" "${{ github.workflow }}" \
             > state/last_run.json
       - name: Commit with rebase-retry
         run: |
