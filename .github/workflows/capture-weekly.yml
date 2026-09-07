@@ -31,7 +31,7 @@ env:
   # buys nothing and costs manners. Raise this only when the source count makes
   # a single job too slow, and check what hosts would then run concurrently.
   SHARDS: "1"
-  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.2"
+  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.3"
 
 jobs:
   plan:
@@ -59,6 +59,11 @@ jobs:
       fail-fast: false # one bad source must not stop the rest of the fleet
       matrix:
         shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    env:
+      # One line per authenticated source's bearer_env. Job scope, not workflow
+      # scope: only capture makes outbound requests, and a credential should not
+      # be in scope for jobs that cannot use it.
+      PEERINGDB_API_KEY: ${{ secrets.PEERINGDB_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

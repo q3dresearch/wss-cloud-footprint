@@ -2,7 +2,7 @@
 # an exchange's city name into a point on the earth without a hand-maintained
 # lookup table that would rot.
 source_id: peeringdb.facilities.geo
-status: auto_disabled  # was active; auto-disabled 2026-09-02 after 5 consecutive failures
+status: active  # re-enabled 2026-09-07 with an API key; see the auth note below
 cadence: weekly
 schema_id: pdb-facilities.v1
 
@@ -16,18 +16,26 @@ storage: git
 # PeeringDB is a volunteer-run non-profit, not a vendor API. 15s between
 # requests, weekly cadence, and one shard: this repo should be invisible in
 # their logs. A 429 here means back off, not retry harder.
-# WHY THIS IS DISABLED: /api/fac unfiltered returns all ~5,860 facilities and
+# WHY THIS NEEDS A KEY: /api/fac unfiltered returns all ~5,860 facilities and
 # 429s for anonymous callers even when /api/ix and /api/netixlan succeed in the
-# same run — so it is a per-query limit, not general throttling. PeeringDB
-# issues free API keys and prefers authenticated access for heavier reads. To
-# re-enable: get a key, add `auth: {bearer_env: PEERINGDB_API_KEY}` below, set
-# the secret, and flip status back to active.
+# same run — a per-query limit, not general throttling. PeeringDB issues free
+# API keys and prefers authenticated access for heavier reads.
+#
+# scheme MATTERS: PeeringDB answers `Authorization: Bearer <key>` with 400 and
+# `Api-Key <key>` with 401 on a bad key — so Bearer is not merely rejected, it
+# is not understood, and the 400 would read as a malformed request rather than
+# as the wrong scheme. An earlier version of this comment said bearer_env; that
+# advice was wrong and would have failed in a way that looks unrelated to auth.
 notes: >-
   5,860 facilities, ~5,256 with coordinates, across ~2,066 cities. Requested
   with an explicit fields= list: the full record carries operator contact
   details, and this repo fetches none of them. Also the reason a map needs no
   basemap package — plotted at (longitude, latitude) the facilities trace the
   populated world themselves.
+
+auth:
+  bearer_env: PEERINGDB_API_KEY
+  scheme: Api-Key
 
 endpoints:
   - url: "https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count"
