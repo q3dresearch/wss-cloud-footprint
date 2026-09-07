@@ -67,8 +67,11 @@ jobs:
       fail-fast: false # one bad source must not stop the rest of the fleet
       matrix:
         shard: ${{ fromJSON(needs.plan.outputs.shards) }}
-    # No env: block -- this repo has no authenticated source. Add one
-    # here, at job scope rather than workflow scope, if one ever does.
+    env:
+      # One line per authenticated source's bearer_env. Job scope, not workflow
+      # scope: only capture makes outbound requests, and a credential should not
+      # be in scope for jobs that cannot use it.
+      PEERINGDB_API_KEY: ${{ secrets.PEERINGDB_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
