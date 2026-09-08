@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900.0" height="420.0" viewBox="0 0 900.0 420.0" role="img" aria-label="Declared capacity over time">
+<title>Declared capacity over time</title>
+<desc>Line chart of declared interconnection capacity per network across weekly captures.</desc>
+<rect width="900.0" height="420.0" fill="#fcfcfb"/>
+<text x="24.0" y="30.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">Declared capacity over time</text>
+<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">Tbps per network, one point per weekly capture · 1 capture(s) so far</text>
+<text x="24.0" y="70.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#898781" text-anchor="start" font-weight="normal" style="">Not a chart yet — it needs 3 more weekly capture(s).</text>
+<rect x="70.0" y="104.0" width="662.0" height="260.0" fill="#f4f4f0" rx="6"/>
+<text x="94.0" y="138.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">Nobody publishes this history — not AWS, not PeeringDB.</text>
+<text x="94.0" y="157.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">There is no window to page back through and no archive to import.</text>
+<text x="94.0" y="176.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">The series starts on 2026-09-01 because that is the day capture started.</text>
+<text x="94.0" y="195.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style=""></text>
+<text x="94.0" y="214.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">Today's values, which become the first point:</text>
+<circle cx="100.0" cy="229.0" r="5" fill="#eb6834"/>
+<text x="114.0" y="233.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">akamai — 81.4 Tbps</text>
+<circle cx="100.0" cy="248.0" r="5" fill="#1baf7a"/>
+<text x="114.0" y="252.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">meta — 77.1 Tbps</text>
+<circle cx="100.0" cy="267.0" r="5" fill="#2a78d6"/>
+<text x="114.0" y="271.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">aws — 52.4 Tbps</text>
+<circle cx="100.0" cy="286.0" r="5" fill="#eb6834"/>
+<text x="114.0" y="290.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">cloudflare — 51.7 Tbps</text>
+<text x="24.0" y="412.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">source: wss-cloud-footprint · peeringdb.networks.capacity · declared capacity, not measured traffic</text>
+</svg>

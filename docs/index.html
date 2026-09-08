@@ -88,6 +88,30 @@
 <p>Point-in-time captures from 5 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.</p>
 <p class="cov">History held: <strong>2026-09-01</strong> to <strong>2026-09-08</strong>.</p>
 
+
+<h2>Findings</h2>
+<p>Figures are rebuilt from the derived tables on every run; each one names the entities it is about so it can be acted on without a further query.</p>
+  <figure>
+    <a href="charts/capacity-history.svg"><img src="charts/capacity-history.svg" alt="Declared capacity over time" loading="lazy"></a>
+    <figcaption><strong>Declared capacity over time</strong> — Line chart of declared interconnection capacity per network across weekly captures.</figcaption>
+  </figure>
+  <figure>
+    <a href="charts/metro-concentration.svg"><img src="charts/metro-concentration.svg" alt="Shared, or owned?" loading="lazy"></a>
+    <figcaption><strong>Shared, or owned?</strong> — Scatter of metro total declared capacity against the largest network&#x27;s share of that metro.</figcaption>
+  </figure>
+  <figure>
+    <a href="charts/network-strategy.svg"><img src="charts/network-strategy.svg" alt="Two ways to build a network" loading="lazy"></a>
+    <figcaption><strong>Two ways to build a network</strong> — Scatter of internet exchanges present at against average declared capacity per exchange, bubble area total capacity.</figcaption>
+  </figure>
+  <figure>
+    <a href="charts/region-gap.svg"><img src="charts/region-gap.svg" alt="What a new region still lacks" loading="lazy"></a>
+    <figcaption><strong>What a new region still lacks</strong> — Stacked bar per AWS region showing the opening-kit services, services added since, and services still missing.</figcaption>
+  </figure>
+  <figure>
+    <a href="charts/rollout-frontier.svg"><img src="charts/rollout-frontier.svg" alt="The rollout frontier" loading="lazy"></a>
+    <figcaption><strong>The rollout frontier</strong> — Ranked bar chart of AWS services present in the fewest regions, naming the regions for the thinnest.</figcaption>
+  </figure>
+
 <h2>What is captured</h2>
 <table>
   <thead><tr><th>source</th><th>publisher</th><th>cadence</th><th>terms</th></tr></thead>
