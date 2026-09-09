@@ -48,6 +48,8 @@ the next thing to build. Append freely.
 | Q7 | Exactly which services is a given region missing? | answerable |
 | Q8 | Which metros are shared, and which are one network's territory? | answered |
 | Q9 | Do interconnection ports arrive before region launches? | accruing |
+| Q10 | Is a stalled service rollout provider-specific, or industry-wide? | **source not yet added** — AWS alone cannot answer it. Azure publishes the same region × service shape (78 × 98 against AWS 43 × 27), so the pair separates "this vendor is slow here" from "nobody has built this out yet" |
+| Q11 | Do the clouds expand into the same places, or partition the map? | blocked on a mapping table. No two providers share region names — `us-east-1` / `us-east1` / `eastus`, **zero** exact overlap across 43, 48 and 78 regions. Comparing them needs a hand-maintained geography map, which is a curated reference and not a capture. Deliberate decision, not a surprise to hit mid-build |
 
 ## What you can build
 

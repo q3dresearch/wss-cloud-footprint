@@ -1,0 +1,46 @@
+source_id: azure.servicetags.public
+status: active
+cadence: weekly
+schema_id: azure.servicetags.v1
+
+publisher: Microsoft Azure
+publisher_tier: first_party
+# Azure ships this weekly under a filename carrying that Monday's date and
+# keeps roughly two weeks: on 2026-09-09, ServiceTags_Public_20260907.json and
+# _20260831.json answered, _20260824.json was already purged. The file's own
+# changeNumber was 417, so 417 versions have been published and two are
+# retrievable. The loss is countable, which is rarer than the loss itself.
+destroys_own_history: true
+licence: "Microsoft publishes this openly for firewall configuration"
+personal_data: none
+storage: git
+
+endpoints:
+  # The template stays this endpoint's identity, so the manifest keeps one
+  # continuous history rather than starting a new one every Monday. lookback
+  # covers the gap before Microsoft writes the current week's file.
+  - url: "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_{monday:%Y%m%d}.json"
+    lookback: 2
+    delay_seconds: 2
+
+gates:
+  expect_status: 200
+  min_bytes: 2000000
+  # Microsoft serves this JSON as application/octet-stream, not
+  # application/json. Widening the type check would weaken it on its own, so
+  # must_contain carries the real guard: an error page has neither of these.
+  content_type_any: [json, octet-stream]
+  must_contain: ['"changeNumber"', '"systemService"']
+  must_not_contain: ["Access Denied", "rate limit"]
+  max_shrink_pct: 40
+
+notes: |
+  Answers Q10 in the README: whether a stalled service rollout is
+  provider-specific or industry-wide. AWS alone cannot separate "this vendor is
+  slow here" from "nobody has built this out yet". 3,321 tags across 78 regions
+  and 98 systemServices, 95% carrying both -- the same shape as the AWS file at
+  larger scale (43 x 27).
+
+  Region names do NOT match AWS (us-east-1 / eastus, zero exact overlap), so
+  any direct cross-provider comparison needs a hand-built geography map. That
+  is Q11 and is deliberately not attempted here.
