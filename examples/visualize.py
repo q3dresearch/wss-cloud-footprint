@@ -29,6 +29,21 @@ from collections import defaultdict
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+
+def _open_partition(path):
+    """Open a derived partition, gzipped or not.
+
+    Engine v0.6.34 made `derived/observations/*.csv.gz` the written form. Every
+    reader in this repo went on globbing `*.csv`, found nothing, and said "no
+    observations yet -- run capture + derive first" over a full archive. Stdlib
+    only, so `head`/`zcat` remain the only tools a reader needs.
+    """
+    import gzip
+    import io
+    if str(path).endswith(".gz"):
+        return io.TextIOWrapper(gzip.open(path, "rb"), encoding="utf-8", newline="")
+    return open(path, encoding="utf-8", newline="")
+
 REPO = Path(__file__).resolve().parents[1]
 OUT_DIR = REPO / "examples" / "charts"
 
@@ -48,8 +63,8 @@ FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif'
 def load(metric: str) -> tuple[list[tuple[str, int]], str]:
     """Latest observation per entity for one metric, plus its date."""
     rows = []
-    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
-        with partition.open(encoding="utf-8", newline="") as fh:
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv*")):
+        with _open_partition(partition) as fh:
             rows.extend(r for r in csv.DictReader(fh) if r["metric"] == metric)
     if not rows:
         return [], ""
@@ -149,8 +164,8 @@ def membership(root: Path = REPO):
     """region -> set of services, straight from the derived table."""
     from collections import defaultdict
     member = defaultdict(set)
-    for partition in sorted((root / "derived" / "observations").glob("*.csv")):
-        with partition.open(encoding="utf-8", newline="") as fh:
+    for partition in sorted((root / "derived" / "observations").glob("*.csv*")):
+        with _open_partition(partition) as fh:
             for r in csv.DictReader(fh):
                 if r["metric"] == "available":
                     region, service = r["entity_id"][7:].split("/service:", 1)
@@ -214,8 +229,8 @@ NET_OTHER = "#b8b7b0"
 def capacity_rows():
     """(date, network, Mbps) for every capture we hold."""
     out = []
-    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
-        with partition.open(encoding="utf-8", newline="") as fh:
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv*")):
+        with _open_partition(partition) as fh:
             for r in csv.DictReader(fh):
                 if r["metric"] == "declared_capacity_total":
                     out.append((r["observed_at"][:10], r["entity_id"][4:], int(r["value"])))
@@ -229,8 +244,8 @@ def network_strategy(out: Path) -> str:
     concentrated in few — a strategy difference invisible in a ranking.
     """
     rows_ = []
-    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
-        with partition.open(encoding="utf-8", newline="") as fh:
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv*")):
+        with _open_partition(partition) as fh:
             for r in csv.DictReader(fh):
                 if r["metric"] in ("declared_capacity_total", "exchanges_present"):
                     rows_.append(r)
@@ -295,8 +310,8 @@ def network_strategy(out: Path) -> str:
 def metro_capacity():
     """(metro -> {network: Mbps}) using the exchange's city as the key."""
     rows_ = []
-    for partition in sorted((REPO / "derived" / "observations").glob("*.csv")):
-        with partition.open(encoding="utf-8", newline="") as fh:
+    for partition in sorted((REPO / "derived" / "observations").glob("*.csv*")):
+        with _open_partition(partition) as fh:
             rows_.extend(csv.DictReader(fh))
     latest = max((r["observed_at"] for r in rows_ if r["metric"] == "declared_capacity"), default=None)
     if not latest:

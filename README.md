@@ -48,8 +48,68 @@ the next thing to build. Append freely.
 | Q7 | Exactly which services is a given region missing? | answerable |
 | Q8 | Which metros are shared, and which are one network's territory? | answered |
 | Q9 | Do interconnection ports arrive before region launches? | accruing |
-| Q10 | Is a stalled service rollout provider-specific, or industry-wide? | **source not yet added** — AWS alone cannot answer it. Azure publishes the same region × service shape (78 × 98 against AWS 43 × 27), so the pair separates "this vendor is slow here" from "nobody has built this out yet" |
+| Q10 | Is a stalled service rollout provider-specific, or industry-wide? | **tested and failed.** Azure is captured, and the premise did not survive it — see below |
 | Q11 | Do the clouds expand into the same places, or partition the map? | blocked on a mapping table. No two providers share region names — `us-east-1` / `us-east1` / `eastus`, **zero** exact overlap across 43, 48 and 78 regions. Comparing them needs a hand-maintained geography map, which is a curated reference and not a capture. Deliberate decision, not a surprise to hit mid-build |
+| Q12 | Is partial rollout unusual, or the ordinary condition? | **answered — ordinary, at both, and the vendors differ more in what they publish than in what they have built** |
+
+### Q10 in full: why adding Azure did not answer it
+
+Q10 was the only question in this table reading `source not yet added`, and the
+entry it justified was `azure.servicetags.public`. The source is captured, it
+parses, and it is worth keeping. It does not answer Q10, and the reason is
+worth more than the answer would have been.
+
+The premise was that Azure publishes "the same region × service shape" as AWS,
+so the pair separates *this vendor is slow here* from *nobody has built this
+out yet*. Measured against the two files, the pair does not join:
+
+| | AWS `ip-ranges.json` | Azure `ServiceTags_Public` |
+| --- | --- | --- |
+| regions | 42 (+`GLOBAL`) | 77 |
+| services | 26 | 97, of which **48** carry a region at all |
+| region names shared with the other | **0** | **0** |
+| service names shared with the other | **0** | **0** |
+
+Zero on both axes, and still zero after normalising case and punctuation and
+stripping the `AWS`/`Amazon`/`Azure` prefixes. So the join needs a
+hand-maintained concordance on **two** axes, where [Q11](#) needs one.
+
+A concordance would not rescue it. **The two files are selected on different
+criteria.** AWS publishes address space for 26 services that have
+distinguishable ranges — `EC2`, `S3`, `ROUTE53`, `CLOUDFRONT` — which is a
+firewall file and nothing more. Azure publishes a 97-entry product catalogue
+including `AzureDevOps`, `Dynamics365ForMarketingEmail` and
+`MicrosoftCloudAppSecurity`, and leaves 49 of them with no region at all.
+Mapping a 26-item list onto a 97-item list drawn from a different population
+compares curation policy, not build-out.
+
+The measurement that makes this concrete is Q12, and it stays **within** each
+vendor, so it needs no mapping. Asking each file "what share of your own
+regions does each of your own services reach?":
+
+- **AWS**: median service reaches **57%** of 42 regions. 6 of 26 reach ≥90%;
+  `CLOUDFRONT_ORIGIN_FACING` reaches 2, `ROUTE53` 7.
+- **Azure**: median regional service reaches **97%** of 77 regions. 34 of 48
+  reach ≥90%; `AzureDataLake` reaches 6, `AzureUpdateDelivery` 9.
+
+A 40-point gap in median reach is not Azure building faster. It is Azure
+tagging per-region only where per-region address space is operationally
+useful, and declaring the other half globally. **Partial rollout is the
+ordinary condition at both**, and the difference between the numbers is a
+publishing decision.
+
+What Azure is genuinely good for is its own history: 3,321 tags over 77 regions
+and 97 services, 95,623 prefixes, and a `changeNumber` of 417 against two
+downloadable files. Microsoft has published 417 versions of this and keeps
+about a fortnight. That is the capture worth having, and it needs no second
+vendor to be worth having.
+
+**Consequence for GCP.** `cloud.json` was queued as the third provider. It
+publishes **one** service value — `Google Cloud` — across 48 scopes and 1,103
+prefixes, so it cannot contribute to a service-rollout question at all, and it
+would add a third region namespace sharing no names with either of the other
+two. Rejected, and recorded as such.
+
 
 ## What you can build
 
