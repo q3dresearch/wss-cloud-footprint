@@ -31,7 +31,7 @@ env:
   # buys nothing and costs manners. Raise this only when the source count makes
   # a single job too slow, and check what hosts would then run concurrently.
   SHARDS: "1"
-  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.19"
+  ENGINE_SPEC: "wss @ git+https://github.com/${{ github.repository_owner }}/wss-engine.git@v0.6.37"
 
 jobs:
   plan:
