@@ -1,7 +1,7 @@
-source_id,first_success_at,last_success_at,last_attempt_at,consecutive_failures,consecutive_throttled,expected_interval_h,staleness_h,gate_fail_rate_28d,status
-aws.infra.ip-ranges,2026-09-01T09:02:19Z,2026-09-09T20:14:11Z,2026-09-09T20:14:11Z,0,0,168,0.1,0.000,active
-aws.services.regional,2026-09-01T09:02:23Z,2026-09-09T20:14:16Z,2026-09-09T20:14:16Z,0,0,168,0.1,0.000,active
-azure.servicetags.public,2026-09-09T14:19:37Z,2026-09-09T20:15:41Z,2026-09-09T20:15:41Z,0,0,168,0.1,0.000,active
-peeringdb.exchanges.directory,2026-09-01T19:06:28Z,2026-09-09T20:16:55Z,2026-09-09T20:16:55Z,0,0,168,0.0,0.000,active
-peeringdb.facilities.geo,2026-09-07T19:48:42Z,2026-09-09T20:18:12Z,2026-09-09T20:18:12Z,0,0,168,0.0,0.111,active
-peeringdb.networks.capacity,2026-09-01T19:07:33Z,2026-09-09T20:18:28Z,2026-09-09T20:18:28Z,0,0,168,0.0,0.000,active
+source_id,first_success_at,last_success_at,last_attempt_at,consecutive_failures,consecutive_throttled,expected_interval_h,staleness_h,gate_fail_rate_28d,attempts_28d,status
+aws.infra.ip-ranges,2026-09-01T09:02:19Z,2026-09-09T20:22:11Z,2026-09-09T20:22:11Z,0,0,168,36.7,0.000,14,active
+aws.services.regional,2026-09-01T09:02:23Z,2026-09-09T20:22:13Z,2026-09-09T20:22:13Z,0,0,168,36.7,0.000,14,active
+azure.servicetags.public,2026-09-09T14:19:37Z,2026-09-09T20:22:17Z,2026-09-09T20:22:17Z,0,0,168,36.7,0.000,3,active
+peeringdb.exchanges.directory,2026-09-01T19:06:28Z,2026-09-09T20:22:20Z,2026-09-09T20:22:20Z,0,0,168,36.7,0.000,12,active
+peeringdb.facilities.geo,2026-09-07T19:48:42Z,2026-09-09T20:22:36Z,2026-09-09T20:22:36Z,0,0,168,36.7,0.100,10,active
+peeringdb.networks.capacity,2026-09-01T19:07:33Z,2026-09-09T20:22:51Z,2026-09-09T20:22:51Z,0,0,168,36.7,0.000,12,active
