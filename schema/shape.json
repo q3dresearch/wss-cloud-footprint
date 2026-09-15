@@ -1,0 +1,751 @@
+{
+  "generated_at": "2026-09-15T13:14:08Z",
+  "note": "Inferred from the derived rows by `wss schema`, not hand-written. Regenerate after any derive.",
+  "sources": {
+    "aws.infra.ip-ranges": {
+      "source_id": "aws.infra.ip-ranges",
+      "schema_id": "aws-ipranges.v1",
+      "cadence": "weekly",
+      "licence": "public AWS endpoint; see https://aws.amazon.com/service-terms/",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "Amazon Web Services",
+      "publisher_tier": "first_party",
+      "endpoints": 1
+    },
+    "aws.services.regional": {
+      "source_id": "aws.services.regional",
+      "schema_id": "aws-regional.v1",
+      "cadence": "weekly",
+      "licence": "public AWS endpoint; see https://aws.amazon.com/service-terms/",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "Amazon Web Services",
+      "publisher_tier": "first_party",
+      "endpoints": 1
+    },
+    "azure.servicetags.public": {
+      "source_id": "azure.servicetags.public",
+      "schema_id": "azure.servicetags.v1",
+      "cadence": "weekly",
+      "licence": "Microsoft publishes this openly for firewall configuration",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "Microsoft Azure",
+      "publisher_tier": "first_party",
+      "endpoints": 1
+    },
+    "peeringdb.exchanges.directory": {
+      "source_id": "peeringdb.exchanges.directory",
+      "schema_id": "pdb-exchanges.v1",
+      "cadence": "weekly",
+      "licence": "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "PeeringDB",
+      "publisher_tier": "primary",
+      "endpoints": 1
+    },
+    "peeringdb.facilities.geo": {
+      "source_id": "peeringdb.facilities.geo",
+      "schema_id": "pdb-facilities.v1",
+      "cadence": "weekly",
+      "licence": "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "PeeringDB",
+      "publisher_tier": "primary",
+      "endpoints": 1
+    },
+    "peeringdb.networks.capacity": {
+      "source_id": "peeringdb.networks.capacity",
+      "schema_id": "pdb-capacity.v1",
+      "cadence": "weekly",
+      "licence": "PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially",
+      "personal_data": "none",
+      "storage": "git",
+      "publisher": "PeeringDB",
+      "publisher_tier": "primary",
+      "endpoints": 1
+    }
+  },
+  "observations": {
+    "rows": 230995,
+    "columns": [
+      "series_id",
+      "entity_id",
+      "observed_at",
+      "captured_at",
+      "metric",
+      "value",
+      "unit",
+      "source_id",
+      "raw_ref",
+      "parser_version"
+    ],
+    "partitions": [
+      "2026-09.csv.gz"
+    ],
+    "series": {
+      "aws.infra.ip-ranges": {
+        "rows": 576,
+        "entities": 71,
+        "entity_id_samples": [
+          "aws",
+          "region:GLOBAL",
+          "region:af-south-1"
+        ],
+        "metrics": [
+          "ipv4_prefixes",
+          "ipv4_prefixes_total",
+          "ipv6_prefixes_total"
+        ]
+      },
+      "aws.services.regional": {
+        "rows": 78860,
+        "entities": 6070,
+        "entity_id_samples": [
+          "aws",
+          "region:af-south-1",
+          "region:af-south-1/service:AD Connector"
+        ],
+        "metrics": [
+          "available",
+          "regions",
+          "regions_available",
+          "service_region_pairs",
+          "services",
+          "services_available"
+        ]
+      },
+      "azure.servicetags.public": {
+        "rows": 26210,
+        "entities": 3322,
+        "entity_id_samples": [
+          "feed:azure_servicetags",
+          "tag:ActionGroup",
+          "tag:ActionGroup.AustraliaCentral"
+        ],
+        "metrics": [
+          "change_number",
+          "prefix_count",
+          "prefix_count_v6",
+          "prefixes_total",
+          "region",
+          "regions_total",
+          "service",
+          "services_total",
+          "tags_total"
+        ]
+      },
+      "peeringdb.exchanges.directory": {
+        "rows": 71394,
+        "entities": 1323,
+        "entity_id_samples": [
+          "ix:1",
+          "ix:100",
+          "ix:1002"
+        ],
+        "metrics": [
+          "city",
+          "continent",
+          "country",
+          "facilities",
+          "ix_name",
+          "networks_present"
+        ]
+      },
+      "peeringdb.facilities.geo": {
+        "rows": 25128,
+        "entities": 2094,
+        "entity_id_samples": [
+          "metro:AE/Abu Dhabi",
+          "metro:AE/Dubai",
+          "metro:AE/Jebel Ali"
+        ],
+        "metrics": [
+          "facilities",
+          "latitude",
+          "longitude",
+          "networks_at_facilities"
+        ]
+      },
+      "peeringdb.networks.capacity": {
+        "rows": 28827,
+        "entities": 1597,
+        "entity_id_samples": [
+          "net:akamai",
+          "net:akamai/ix:1",
+          "net:akamai/ix:100"
+        ],
+        "metrics": [
+          "declared_capacity",
+          "declared_capacity_total",
+          "exchanges_present",
+          "ports",
+          "ports_total"
+        ]
+      }
+    },
+    "parser_versions": [
+      "1",
+      "2"
+    ]
+  },
+  "metrics": {
+    "available": {
+      "rows": 75805,
+      "unit": "bool",
+      "type": "bool",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 5837,
+      "distinct_values": 1,
+      "empty": 0,
+      "samples": [
+        "1"
+      ]
+    },
+    "change_number": {
+      "rows": 2,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "417",
+      "max": "417",
+      "samples": [
+        "417"
+      ]
+    },
+    "city": {
+      "rows": 11899,
+      "unit": "ref",
+      "type": "text",
+      "series": [
+        "peeringdb.exchanges.directory"
+      ],
+      "entities": 1323,
+      "distinct_values": 736,
+      "empty": 0,
+      "samples": [
+        "/",
+        "Abidjan",
+        "Abuja"
+      ]
+    },
+    "continent": {
+      "rows": 11899,
+      "unit": "ref",
+      "type": "text",
+      "series": [
+        "peeringdb.exchanges.directory"
+      ],
+      "entities": 1323,
+      "distinct_values": 7,
+      "empty": 0,
+      "samples": [
+        "Africa",
+        "Asia Pacific",
+        "Australia"
+      ]
+    },
+    "country": {
+      "rows": 11899,
+      "unit": "ref",
+      "type": "text",
+      "series": [
+        "peeringdb.exchanges.directory"
+      ],
+      "entities": 1323,
+      "distinct_values": 171,
+      "empty": 0,
+      "samples": [
+        "AE",
+        "AF",
+        "AL"
+      ]
+    },
+    "declared_capacity": {
+      "rows": 14292,
+      "unit": "Mbps",
+      "type": "number",
+      "series": [
+        "peeringdb.networks.capacity"
+      ],
+      "entities": 1588,
+      "distinct_values": 40,
+      "empty": 0,
+      "min": "0",
+      "max": "8000000",
+      "samples": [
+        "0",
+        "1000",
+        "10000"
+      ]
+    },
+    "declared_capacity_total": {
+      "rows": 81,
+      "unit": "Mbps",
+      "type": "number",
+      "series": [
+        "peeringdb.networks.capacity"
+      ],
+      "entities": 9,
+      "distinct_values": 11,
+      "empty": 0,
+      "min": "4510000",
+      "max": "81416000",
+      "samples": [
+        "29940000",
+        "40200000",
+        "4510000"
+      ]
+    },
+    "exchanges_present": {
+      "rows": 81,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.networks.capacity"
+      ],
+      "entities": 9,
+      "distinct_values": 9,
+      "empty": 0,
+      "min": "34",
+      "max": "355",
+      "samples": [
+        "151",
+        "166",
+        "176"
+      ]
+    },
+    "facilities": {
+      "rows": 18181,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.exchanges.directory",
+        "peeringdb.facilities.geo"
+      ],
+      "entities": 3417,
+      "distinct_values": 45,
+      "empty": 0,
+      "min": "0",
+      "max": "242",
+      "samples": [
+        "0",
+        "1",
+        "10"
+      ]
+    },
+    "ipv4_prefixes": {
+      "rows": 560,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.infra.ip-ranges"
+      ],
+      "entities": 70,
+      "distinct_values": 101,
+      "empty": 0,
+      "min": "1",
+      "max": "6011",
+      "samples": [
+        "1",
+        "102",
+        "104"
+      ]
+    },
+    "ipv4_prefixes_total": {
+      "rows": 8,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.infra.ip-ranges"
+      ],
+      "entities": 1,
+      "distinct_values": 5,
+      "empty": 0,
+      "min": "10520",
+      "max": "10549",
+      "samples": [
+        "10520",
+        "10522",
+        "10537"
+      ]
+    },
+    "ipv6_prefixes_total": {
+      "rows": 8,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.infra.ip-ranges"
+      ],
+      "entities": 1,
+      "distinct_values": 6,
+      "empty": 0,
+      "min": "6237",
+      "max": "6912",
+      "samples": [
+        "6237",
+        "6239",
+        "6241"
+      ]
+    },
+    "ix_name": {
+      "rows": 11899,
+      "unit": "ref",
+      "type": "text",
+      "series": [
+        "peeringdb.exchanges.directory"
+      ],
+      "entities": 1323,
+      "distinct_values": 1328,
+      "empty": 0,
+      "samples": [
+        "1-BG FREE",
+        "1-CZ FREE",
+        "1-DE FREE"
+      ]
+    },
+    "latitude": {
+      "rows": 6282,
+      "unit": "deg",
+      "type": "number",
+      "series": [
+        "peeringdb.facilities.geo"
+      ],
+      "entities": 2094,
+      "distinct_values": 2088,
+      "empty": 0,
+      "min": "-82.8628",
+      "max": "65.6763",
+      "samples": [
+        "-0.0339",
+        "-0.2107",
+        "-0.7449"
+      ]
+    },
+    "longitude": {
+      "rows": 6282,
+      "unit": "deg",
+      "type": "number",
+      "series": [
+        "peeringdb.facilities.geo"
+      ],
+      "entities": 2094,
+      "distinct_values": 2088,
+      "empty": 0,
+      "min": "-158.0869",
+      "max": "178.0274",
+      "samples": [
+        "-0.0012",
+        "-0.003",
+        "-0.0706"
+      ]
+    },
+    "networks_at_facilities": {
+      "rows": 6282,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.facilities.geo"
+      ],
+      "entities": 2094,
+      "distinct_values": 205,
+      "empty": 0,
+      "min": "0",
+      "max": "2388",
+      "samples": [
+        "0",
+        "1",
+        "10"
+      ]
+    },
+    "networks_present": {
+      "rows": 11899,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.exchanges.directory"
+      ],
+      "entities": 1323,
+      "distinct_values": 289,
+      "empty": 0,
+      "min": "0",
+      "max": "1860",
+      "samples": [
+        "0",
+        "1",
+        "10"
+      ]
+    },
+    "ports": {
+      "rows": 14292,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.networks.capacity"
+      ],
+      "entities": 1588,
+      "distinct_values": 6,
+      "empty": 0,
+      "min": "1",
+      "max": "6",
+      "samples": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "ports_total": {
+      "rows": 81,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "peeringdb.networks.capacity"
+      ],
+      "entities": 9,
+      "distinct_values": 11,
+      "empty": 0,
+      "min": "39",
+      "max": "440",
+      "samples": [
+        "276",
+        "317",
+        "335"
+      ]
+    },
+    "prefix_count": {
+      "rows": 6642,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 3321,
+      "distinct_values": 213,
+      "empty": 0,
+      "min": "1",
+      "max": "3114",
+      "samples": [
+        "1",
+        "10",
+        "100"
+      ]
+    },
+    "prefix_count_v6": {
+      "rows": 6642,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 3321,
+      "distinct_values": 107,
+      "empty": 0,
+      "min": "0",
+      "max": "1294",
+      "samples": [
+        "0",
+        "1",
+        "10"
+      ]
+    },
+    "prefixes_total": {
+      "rows": 2,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "95623",
+      "max": "95623",
+      "samples": [
+        "95623"
+      ]
+    },
+    "region": {
+      "rows": 6434,
+      "unit": "name",
+      "type": "text",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 3217,
+      "distinct_values": 77,
+      "empty": 0,
+      "samples": [
+        "australiacentral",
+        "australiacentral2",
+        "australiaeast"
+      ]
+    },
+    "regions": {
+      "rows": 13,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "37",
+      "max": "37",
+      "samples": [
+        "37"
+      ]
+    },
+    "regions_available": {
+      "rows": 2535,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 195,
+      "distinct_values": 30,
+      "empty": 0,
+      "min": "3",
+      "max": "37",
+      "samples": [
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    "regions_total": {
+      "rows": 2,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "77",
+      "max": "77",
+      "samples": [
+        "77"
+      ]
+    },
+    "service": {
+      "rows": 6482,
+      "unit": "name",
+      "type": "text",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 3241,
+      "distinct_values": 97,
+      "empty": 0,
+      "samples": [
+        "ActionGroup",
+        "ApplicationInsightsAvailability",
+        "AutonomousDevelopmentPlatform"
+      ]
+    },
+    "service_region_pairs": {
+      "rows": 13,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 1,
+      "distinct_values": 3,
+      "empty": 0,
+      "min": "5823",
+      "max": "5836",
+      "samples": [
+        "5823",
+        "5824",
+        "5836"
+      ]
+    },
+    "services": {
+      "rows": 13,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "195",
+      "max": "195",
+      "samples": [
+        "195"
+      ]
+    },
+    "services_available": {
+      "rows": 481,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "aws.services.regional"
+      ],
+      "entities": 37,
+      "distinct_values": 35,
+      "empty": 0,
+      "min": "105",
+      "max": "195",
+      "samples": [
+        "105",
+        "115",
+        "119"
+      ]
+    },
+    "services_total": {
+      "rows": 2,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "97",
+      "max": "97",
+      "samples": [
+        "97"
+      ]
+    },
+    "tags_total": {
+      "rows": 2,
+      "unit": "count",
+      "type": "number",
+      "series": [
+        "azure.servicetags.public"
+      ],
+      "entities": 1,
+      "distinct_values": 1,
+      "empty": 0,
+      "min": "3321",
+      "max": "3321",
+      "samples": [
+        "3321"
+      ]
+    }
+  },
+  "raw": {
+    "files": 31,
+    "bytes_on_disk": 19947251,
+    "capture_dates": 5,
+    "first_capture": "2026-09-01T09:02:19Z",
+    "last_capture": "2026-09-09T20:22:51Z"
+  }
+}
