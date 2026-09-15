@@ -3,7 +3,7 @@
 <desc>Scatter of internet exchanges present at against average declared capacity per exchange, bubble area total capacity.</desc>
 <rect width="900.0" height="470.0" fill="#fcfcfb"/>
 <text x="24.0" y="30.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600" style="">Two ways to build a network</text>
-<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">exchanges reached against average capacity at each · snapshot 2026-09-01</text>
+<text x="24.0" y="50.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" style="">exchanges reached against average capacity at each · snapshot 2026-09-09</text>
 <text x="24.0" y="70.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#898781" text-anchor="start" font-weight="normal" style="">right = present in more places · up = heavier at each one · bubble area = total declared capacity</text>
 <rect x="24.0" y="85.0" width="10" height="10" rx="2" fill="#2a78d6"/>
 <text x="40.0" y="94.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="11" fill="#52514e" text-anchor="start" font-weight="normal" style="">enterprise cloud</text>
@@ -28,20 +28,20 @@
 <text x="62.0" y="108.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="start" font-weight="normal" style="">Gbps per exchange</text>
 <text x="410.0" y="456.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#898781" text-anchor="middle" font-weight="normal" style="">internet exchanges present at</text>
 <line x1="70.0" y1="412.0" x2="750.0" y2="412.0" stroke="#c3c2b7" stroke-width="1"/>
-<circle cx="497.6" cy="189.5" r="21.0" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
-<text x="497.6" y="162.5" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">akamai 81T</text>
+<circle cx="497.6" cy="190.3" r="21.0" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="497.6" y="163.3" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">akamai 81T</text>
 <circle cx="427.4" cy="159.8" r="20.6" fill="#1baf7a" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
-<text x="427.4" y="133.3" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">meta 77T</text>
-<circle cx="353.9" cy="196.3" r="17.8" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="427.4" y="133.2" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">meta 77T</text>
+<circle cx="353.9" cy="196.3" r="17.9" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
 <text x="353.9" y="172.5" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">aws 52T</text>
-<circle cx="677.1" cy="312.4" r="17.8" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
-<text x="677.1" y="288.7" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">cloudflare 52T</text>
+<circle cx="677.1" cy="312.6" r="17.8" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<text x="677.1" y="288.8" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">cloudflare 52T</text>
 <circle cx="328.2" cy="194.1" r="17.3" fill="#eb6834" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
 <text x="328.2" y="158.8" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">fastly 48T</text>
-<circle cx="422.3" cy="278.7" r="16.2" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="422.3" cy="278.7" r="16.3" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
 <text x="422.3" y="256.4" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">microsoft 40T</text>
 <circle cx="371.0" cy="295.8" r="14.7" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
-<text x="371.0" y="275.1" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">google 30T</text>
+<text x="371.0" y="275.0" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">google 30T</text>
 <circle cx="140.1" cy="276.0" r="10.1" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>
 <text x="140.1" y="259.9" font-family='system-ui, -apple-system, "Segoe UI", sans-serif' font-size="10" fill="#52514e" text-anchor="middle" font-weight="600" style="">digitalocean 8T</text>
 <circle cx="128.1" cy="321.4" r="8.8" fill="#2a78d6" fill-opacity="0.55" stroke="#fcfcfb" stroke-width="2"/>

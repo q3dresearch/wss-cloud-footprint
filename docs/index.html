@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cloud Footprint History (wss-cloud-footprint)</title>
-<meta name="description" content="Point-in-time captures from 5 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.">
+<meta name="description" content="Point-in-time captures from 6 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "Dataset",
   "name": "Cloud Footprint History (wss-cloud-footprint)",
-  "description": "Point-in-time captures from 5 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.",
+  "description": "Point-in-time captures from 6 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.",
   "url": "https://github.com/q3dresearch/wss-cloud-footprint",
   "license": "CC-BY-4.0",
   "isAccessibleForFree": true,
@@ -39,7 +39,7 @@
       "contentUrl": "https://github.com/q3dresearch/wss-cloud-footprint/tree/main/data"
     }
   ],
-  "temporalCoverage": "2026-09-01/2026-09-08",
+  "temporalCoverage": "2026-09-01/2026-09-15",
   "isBasedOn": [
     {
       "@type": "Dataset",
@@ -50,6 +50,11 @@
       "@type": "Dataset",
       "name": "Amazon Web Services",
       "url": "https://api.regional-table.region-services.aws.a2z.com/index.json"
+    },
+    {
+      "@type": "Dataset",
+      "name": "Microsoft Azure",
+      "url": "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_{monday:%Y%m%d}.json"
     },
     {
       "@type": "Dataset",
@@ -85,8 +90,8 @@
 </head>
 <body>
 <h1>Cloud Footprint History (wss-cloud-footprint)</h1>
-<p>Point-in-time captures from 5 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.</p>
-<p class="cov">History held: <strong>2026-09-01</strong> to <strong>2026-09-08</strong>.</p>
+<p>Point-in-time captures from 6 sources that do not keep their own history. Each capture stores the bytes as served, with a manifest row recording the URL, fetch time and SHA-256.</p>
+<p class="cov">History held: <strong>2026-09-01</strong> to <strong>2026-09-15</strong>.</p>
 
 
 <h2>Findings</h2>
@@ -118,6 +123,7 @@
   <tbody>
       <tr><td><code>aws.infra.ip-ranges</code></td><td>Amazon Web Services</td><td>weekly</td><td>public AWS endpoint; see https://aws.amazon.com/service-terms/</td></tr>
       <tr><td><code>aws.services.regional</code></td><td>Amazon Web Services</td><td>weekly</td><td>public AWS endpoint; see https://aws.amazon.com/service-terms/</td></tr>
+      <tr><td><code>azure.servicetags.public</code></td><td>Microsoft Azure</td><td>weekly</td><td>Microsoft publishes this openly for firewall configuration</td></tr>
       <tr><td><code>peeringdb.exchanges.directory</code></td><td>PeeringDB</td><td>weekly</td><td>PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially</td></tr>
       <tr><td><code>peeringdb.facilities.geo</code></td><td>PeeringDB</td><td>weekly</td><td>PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially</td></tr>
       <tr><td><code>peeringdb.networks.capacity</code></td><td>PeeringDB</td><td>weekly</td><td>PeeringDB API; see https://www.peeringdb.com/ terms — VERIFY before redistributing derived data commercially</td></tr>
@@ -132,7 +138,7 @@
 matching manifest row holds that <code>raw_ref</code> with the URL, the fetch
 timestamp and a SHA-256 of exactly what came back, so any number here traces to
 the bytes it came from.</p>
-<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/q3dresearch/wss-cloud-footprint">https://github.com/q3dresearch/wss-cloud-footprint</a>, accessed 2026-09-08.</p>
+<p>Cite this dataset by its repository and the date you took it from: <a href="https://github.com/q3dresearch/wss-cloud-footprint">https://github.com/q3dresearch/wss-cloud-footprint</a>, accessed 2026-09-15.</p>
 
 <footer>
 <p>Repository code and captured data are licensed separately. This dataset is
