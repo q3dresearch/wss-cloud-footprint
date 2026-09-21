@@ -10,7 +10,8 @@ authors:
     website: "https://github.com/neldivad"
   - name: "q3dresearch"
     website: "https://github.com/q3dresearch"
-license: CC-BY-4.0
+# No `license:` field: AWS service terms and an unresolved PeeringDB VERIFY flag; no upstream grant
+# The CODE is MIT (see LICENSE); this file cites the DATASET.
 keywords:
   - git-scraping
   - open-data

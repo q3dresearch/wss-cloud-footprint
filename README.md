@@ -197,7 +197,11 @@ moment. Keep all of that if you fork.
 
 ## Licences
 
-Code MIT; data CC-BY-4.0. Sources: public AWS endpoints
-([terms](https://aws.amazon.com/service-terms/)) and
-[PeeringDB](https://www.peeringdb.com/), whose terms should be checked before
-redistributing derived data commercially.
+Code MIT ([LICENSE](LICENSE)). **The data is not CC-BY-4.0** — see
+[LICENSE-DATA](LICENSE-DATA). Sources are AWS
+([service terms](https://aws.amazon.com/service-terms/)), Microsoft's published
+IP ranges, and [PeeringDB](https://www.peeringdb.com/). None grants onward
+redistribution rights, and the PeeringDB entries carry an unresolved **VERIFY
+before redistributing derived data commercially** flag. Attribute the original
+publishers, not this repository.
+
