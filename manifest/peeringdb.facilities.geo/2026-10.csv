@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+peeringdb.facilities.geo,"https://www.peeringdb.com/api/fac?fields=id,name,city,country,latitude,longitude,net_count,ix_count",2026-10-06T02:23:32Z,200,application/json,963189,00e90c58cc19a8afad19a542af2495298639af9ad9d6eca1ff00ea4eddd3e1a1,,,changed,raw/peeringdb.facilities.geo/2026/10/20261006T022332Z-00e90c58cc19.json.gz,,
