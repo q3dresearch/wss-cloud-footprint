@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+aws.infra.ip-ranges,https://ip-ranges.amazonaws.com/ip-ranges.json,2026-11-03T03:33:32Z,200,application/json,2746810,71ee6edd2f376dbc683d94553877bba34ee35c1f50d5a00b57b161f6e9a42a59,"""62193f5abbbe9dcfce6e54f4a201dabb""","Mon, 02 Nov 2026 19:26:26 GMT",changed,raw/aws.infra.ip-ranges/2026/11/20261103T033332Z-71ee6edd2f37.json.gz,,

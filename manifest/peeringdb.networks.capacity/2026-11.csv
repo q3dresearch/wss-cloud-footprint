@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+peeringdb.networks.capacity,"https://www.peeringdb.com/api/netixlan?asn__in=16509,15169,8075,13335,54113,32934,31898,14061,20940&limit=5000&fields=asn,ix_id,name,speed,operational,is_rs_peer",2026-11-03T03:34:14Z,200,application/json,316210,78446377766cf8753daeedc7ee8b4af99490e42a20f929553299adcc6fbb2de1,,,changed,raw/peeringdb.networks.capacity/2026/11/20261103T033414Z-78446377766c.json.gz,,

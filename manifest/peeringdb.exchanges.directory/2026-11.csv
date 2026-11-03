@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+peeringdb.exchanges.directory,"https://www.peeringdb.com/api/ix?fields=id,name,city,country,region_continent,net_count,fac_count",2026-11-03T03:33:43Z,200,application/json,192117,b318820c19d8dfe824323195764e593ae489baaf8fb9fe606d271c485f52d6cf,,,changed,raw/peeringdb.exchanges.directory/2026/11/20261103T033343Z-b318820c19d8.json.gz,,

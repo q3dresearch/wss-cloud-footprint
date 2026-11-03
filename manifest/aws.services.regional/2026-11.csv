@@ -1,0 +1,2 @@
+source_id,url,fetched_at,http_status,content_type,content_length,content_sha256,etag,last_modified,outcome,raw_ref,reason,warnings
+aws.services.regional,https://api.regional-table.region-services.aws.a2z.com/index.json,2026-11-03T03:33:34Z,200,application/json,1673227,a7622721db635e76773cc776d526e6037bb269a7a7eb34d37cba01a27ee6e5a7,"""3aca6da8f4a63d7016dd30d41db876fe""","Tue, 03 Nov 2026 02:30:54 GMT",changed,raw/aws.services.regional/2026/11/20261103T033334Z-a7622721db63.json.gz,,
